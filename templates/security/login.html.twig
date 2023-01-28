@@ -1,0 +1,79 @@
+{% extends 'splitview_base.html.twig' %}
+
+{% block title %}Se connecter{% endblock %}
+
+{% block content %}
+
+    {% if error is not null %}
+        <div class="login__error_message text-white px-6 py-4 border-0 rounded relative bg-red-500 mb-10">
+                            <span class="inline-block align-middle mr-8">
+                                    {{ error.messageKey|trans(error.messageData, 'security') }}
+                                </span>
+        </div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="text-white px-6 py-4 border-0 rounded relative bg-emerald-500 mb-10">
+
+                                <span class="inline-block align-middle mr-8">
+                                    Vous êtes connecté en tant que {{ app.user.userIdentifier }}, <a
+                                            class="hover:underline" href="#">Déconnecter</a>
+                                </span>
+            {#                                <button class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none"> #}
+            {#                                    <span>×</span> #}
+            {#                                </button> #}
+        </div>
+
+    {% endif %}
+
+    <div class="text-center">
+        <p class="mt-3 text-gray-500 dark:text-gray-300">Connectez-vous pour accéder à votre
+            application</p>
+    </div>
+
+    <div class="mt-8">
+
+
+        <form method="post">
+            <div>
+                <label for="username" class="block mb-2 text-sm text-gray-600 dark:text-gray-200">Identifiant</label>
+                <input type="text" id="username" placeholder="collaborateur@techeauxenergies.fr"
+                       class="splitscreen__input"
+                       value="{{ last_username }}" name="username" autocomplete="email"
+                       required autofocus/>
+            </div>
+
+            <div class="mt-6">
+                <div class="flex justify-between mb-2">
+                    <label for="password" class="form-control text-sm text-gray-600 dark:text-gray-200"
+                           id="inputPassword"
+                    >Mot de passe</label>
+                    <a href="{{ path('app_forgot_password_request') }}"
+                       class="login__forgotten_password text-sm text-gray-400 focus:text-blue-500 hover:text-blue-500 hover:underline">Mot
+                        de passe oublié ? </a>
+                </div>
+
+                <input name="password" id="password" placeholder="Votre mot de passe"
+                       type="password" autocomplete="current-password" required
+                       class="splitscreen__input"/>
+            </div>
+
+            <input type="hidden" name="_csrf_token"
+                   value="{{ csrf_token('authenticate') }}"
+            >
+
+            <div class="mt-6">
+                <button
+                        class="splitscreen__button">
+                    Me connecter
+                </button>
+            </div>
+
+        </form>
+
+        {#                        <p class="mt-6 text-sm text-center text-gray-400">Pas encore de compte ? <a href="/register" #}
+        {#                                                                                                    class="text-emerald-400 focus:outline-none focus:underline hover:underline">S'inscrire</a>. #}
+        {#                        </p> #}
+    </div>
+
+{% endblock %}

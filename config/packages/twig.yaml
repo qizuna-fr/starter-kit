@@ -1,0 +1,15 @@
+twig:
+
+    globals:
+        application_name: "%app.application_name%"
+
+    default_path: '%kernel.project_dir%/templates'
+    form_themes: ['tailwind_2_layout.html.twig']
+    paths:
+        # point this wherever your images live
+        '%kernel.project_dir%/assets/images': images
+        '%kernel.project_dir%/assets/styles/emails': styles
+
+when@test:
+    twig:
+        strict_variables: true

@@ -1,0 +1,32 @@
+{%  extends 'emails/base.html.twig' %}
+
+
+{% block content %}
+    <row class="header">
+        <columns>
+            <spacer size="16"></spacer>
+            <h1 class="text-center">Votre demande de nouveau mot de passe!</h1>
+        </columns>
+    </row>
+    <row>
+        <columns>
+            <p>Pour générer un nouveau mot de passe, merci de cliquer sur le bouton ci-dessus.</p>
+            <p>Cette demande sera expirée dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
+        </columns>
+    </row>
+    <row>
+        <columns>
+            <row>
+                <columns>
+                    <spacer size="20"></spacer>
+                    <button href="{{ url('app_reset_password', {token: resetToken.token}) }}" class="expanded">Créer mon nouveau mot de passe</button>
+                    <spacer size="20"></spacer>
+                </columns>
+            </row>
+        </columns>
+    </row>
+
+
+
+{% endblock %}
+

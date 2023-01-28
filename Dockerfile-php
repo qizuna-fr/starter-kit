@@ -1,0 +1,10 @@
+ARG PHP_VERSION=8.1
+
+FROM qizuna/php-fpm:${PHP_VERSION} AS app_php
+
+RUN set -eux; \
+    install-php-extensions \
+		  pdo_mysql \
+    	xsl \
+    ;
+

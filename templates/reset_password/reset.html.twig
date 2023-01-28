@@ -1,0 +1,15 @@
+{% extends 'splitview_base.html.twig' %}
+
+{% block title %}Créer un nouveau mot de passe{% endblock %}
+
+{% block content %}
+
+    <div class="text-center">
+        <p class="mt-3 text-gray-500 dark:text-gray-300 mb-8">Entrez deux fois votre nouveau mot de passe ci-dessous.</p>
+    </div>
+
+    {{ form_start(resetForm) }}
+        {{ form_row(resetForm.plainPassword) }}
+        <button class="splitscreen__button mt-6">Créer le nouveau mot de passe</button>
+    {{ form_end(resetForm) }}
+{% endblock %}

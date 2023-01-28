@@ -1,0 +1,39 @@
+
+
+<div class="relative flex-shrink-0" {{ stimulus_controller('layout/layout') }}>
+    <div>
+        <button type="button"
+                class="flex items-center justify-center rounded-full bg-qizunaBlue-500 p-1 text-white hover:bg-qizunaBlue-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                {{ stimulus_action('layout/layout', 'toggle') }}>
+            <!-- Heroicon name: outline/plus -->
+            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+            <span class="sr-only">Add file</span>
+        </button>
+    </div>
+
+    <!--
+      Dropdown menu, show/hide based on menu state.
+
+      Entering: "transition ease-out duration-100"
+        From: "transform opacity-0 scale-95"
+        To: "transform opacity-100 scale-100"
+      Leaving: "transition ease-in duration-75"
+        From: "transform opacity-100 scale-100"
+        To: "transform opacity-0 scale-95"
+    -->
+    <div {{ stimulus_target('layout/layout', 'menu') }}
+            {{ stimulus_action('layout/layout' , 'close' , 'layout--layout:click:outside') }}
+            {#            data-action="click:outside->layout--layout#close"#}
+            {#            data-action="layout--layout:click:outside->layout--layout#close"#}
+            class=" hidden absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+            role="menu" aria-orientation="vertical"
+            aria-labelledby="user-menu-button"
+            tabindex="-1">
+        <!-- Active: "bg-gray-100", Not Active: "" -->
+        <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Nouvelle Analyse</a>
+
+        <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Nouveau rapport</a>
+    </div>
+</div>

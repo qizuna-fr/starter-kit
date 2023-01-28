@@ -1,0 +1,75 @@
+<!--
+  Mobile menu
+
+  Off-canvas menu for mobile, show/hide based on off-canvas menu state.
+-->
+<div class="relative z-20 md:hidden" role="dialog" aria-modal="true">
+    <!--
+      Off-canvas menu backdrop, show/hide based on off-canvas menu state.
+
+      Entering: "transition-opacity ease-linear duration-300"
+        From: "opacity-0"
+        To: "opacity-100"
+      Leaving: "transition-opacity ease-linear duration-300"
+        From: "opacity-100"
+        To: "opacity-0"
+    -->
+    <div class="fixed inset-0 bg-gray-600 bg-opacity-75" {{ stimulus_target('layout/menu' , 'menuBackdrop') }}></div>
+
+    <div class="fixed inset-0 z-40 flex" {{ stimulus_target('layout/menu' , 'menuContainer') }}>
+        <!--
+          Off-canvas menu, show/hide based on off-canvas menu state.
+
+          Entering: "transition ease-in-out duration-300 transform"
+            From: "-translate-x-full"
+            To: "translate-x-0"
+          Leaving: "transition ease-in-out duration-300 transform"
+            From: "translate-x-0"
+            To: "-translate-x-full"
+        -->
+        <div class="relative flex w-full max-w-xs flex-1 flex-col bg-gray-800 pt-5 pb-4">
+            <!--
+              Close button, show/hide based on off-canvas menu state.
+
+              Entering: "ease-in-out duration-300"
+                From: "opacity-0"
+                To: "opacity-100"
+              Leaving: "ease-in-out duration-300"
+                From: "opacity-100"
+                To: "opacity-0"
+            -->
+            <div class="absolute top-1 right-0 -mr-14 p-1">
+                <button type="button" class="flex h-12 w-12 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-white"  {{ stimulus_action('layout/menu' , 'close') }}>
+                    <!-- Heroicon name: outline/x-mark -->
+                    <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                    <span class="sr-only">Fermer le menu</span>
+                </button>
+            </div>
+
+            <div class="flex flex-shrink-0 items-center px-4">
+                <img class="h-24 w-auto" src="{{ asset('build/images/TEE_Logo03B__.png') }}" alt="Tech Eaux Energies">
+            </div>
+            <div class="mt-5 h-0 flex-1 overflow-y-auto px-2">
+                <nav class="flex h-full flex-col">
+                    <div class="space-y-1">
+                        <!-- Current: "bg-indigo-800 text-white", Default: "text-indigo-100 hover:bg-indigo-800 hover:text-white" -->
+                        {#                                <a href="#" class="text-indigo-100 hover:bg-indigo-500 hover:text-white group py-2 px-3 rounded-md flex items-center text-sm ">#}
+
+                        {% include '/partials/menu-item.html.twig' with  {link:"/" , text:"Dashboard" , icon:"fa-solid fa-2x fa-gauge-high"} %}
+                        {% include '/partials/menu-item.html.twig' with  {link:path('app_customer_index') , text:"Clients" , icon:"fa-solid fa-2x fa-users"} %}
+                        {% include '/partials/menu-item.html.twig' with  {link:path('app_device_index') , text:"Chaudières" , icon:"fa-solid fa-2x fa-fire"} %}
+                        {% include '/partials/menu-item.html.twig' with  {link:"#" , text:"Analyses" , icon:"fa-solid fa-2x fa-chart-line"} %}
+                        {% include '/partials/menu-item.html.twig' with  {link:"#" , text:"Réglages" , icon:"fa-solid fa-2x fa-cog"} %}
+
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <div class="w-14 flex-shrink-0" aria-hidden="true">
+            <!-- Dummy element to force sidebar to shrink to fit close icon -->
+        </div>
+    </div>
+</div>
