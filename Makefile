@@ -106,6 +106,10 @@ sf-mm: ## Make migrations.
 	$(SYMFONY_CONSOLE) make:migration
 .PHONY: sf-mm
 
+sf-reset-migrations: ## Reset migrations.
+	rm -Rf ./migrations/*
+.PHONY: sf-reset-migrations
+
 sf-dmm: ## Migrate.
 	$(SYMFONY_CONSOLE) doctrine:migrations:migrate --no-interaction
 .PHONY: sf-dmm
@@ -285,7 +289,7 @@ tests-coverage: ## Run tests with coverage.
 before-commit: qa-cs-fixer qa-phpstan qa-security-checker qa-phpcpd qa-lint-twigs qa-lint-yaml qa-lint-container qa-lint-schema tests ## Run before commit.
 .PHONY: before-commit
 
-first-install: docker-up composer-install npm-install npm-build sf-perm sf-dc sf-dmm sf-fixtures sf-start sf-open ## First install.
+first-install: docker-up composer-install npm-install npm-build sf-perm sf-dd sf-dc sf-reset-migrations sf-mm sf-dmm sf-fixtures sf-start sf-open ## First install.
 .PHONY: first-install
 
 start: docker-up sf-start sf-open ## Start project.

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use DateTime;
 use DateTimeImmutable;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
@@ -142,8 +143,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setActivatedAt(?DateTimeInterface $activatedAt): self
     {
-        $this->activatedAt = DateTimeImmutable::createFromMutable($activatedAt);
+        if($activatedAt instanceof DateTimeImmutable){
+            $this->activatedAt = $activatedAt;
+            return $this;
+        }
 
+        $this->activatedAt = DateTimeImmutable::createFromMutable($activatedAt);
         return $this;
     }
 

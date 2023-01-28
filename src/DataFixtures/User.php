@@ -19,7 +19,7 @@ final class User extends Fixture
     public function load(ObjectManager $manager): void
     {
         $manager->persist($this->generateUser('user'));
-        $manager->persist($this->generateUser('user' , true , ["ROLE_ADMIN"]));
+        $manager->persist($this->generateUser('admin' , true , ["ROLE_ADMIN"]));
 
         $manager->flush();
     }
