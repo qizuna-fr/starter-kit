@@ -307,12 +307,3 @@ reset-db: ## Reset database.
 	fi
 .PHONY: reset-db
 #---------------------------------------------#
-
-## === 🤓 QIZUNA ================================================
-init : ## Init application.
-	$(DOCKER_COMPOSE_UP); \
-	$(MAKE) sf-dd; \
-	$(MAKE) sf-dc; \
-  	$(MAKE) sf-dmm; \
-  	$(MAKE) sf-fixtures;
-.PHONY: init
