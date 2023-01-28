@@ -10,18 +10,11 @@
     @apply bg-qizunaGray-500;
 }
 
-/*p{*/
-/*    @apply text-xl tracking-tight leading-5 mt-3*/
-/*}*/
-
 h1{
-  /*@apply  tracking-tighter text-5xl text-gray-600 border-b-2 border-b-qizunaOrange-500*/
-    @apply text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight
+    @apply text-2xl font-bold sm:truncate sm:text-3xl sm:tracking-tight
 }
 
-h2{
-    /*@apply font-title tracking-tighter text-4xl text-qizunaOrange-500*/
-}
+
 
 img.logo{
     max-height: 100px;

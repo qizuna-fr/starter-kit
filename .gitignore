@@ -27,3 +27,4 @@ yarn-error.log
 /.php-cs-fixer.cache
 /phpcs.xml
 ###< squizlabs/php_codesniffer ###
+/migrations/
