@@ -3,14 +3,14 @@
     <div class="flex w-full flex-col items-center py-6 h-full">
         <div class="flex flex-shrink-0 items-center ">
             <a href="/">
-                <img class="h-24 w-auto" src="{{ asset('build/images/TEE_Logo01B__.png') }}" alt="Tech Eaux Energies">
+                <img class="h-24 w-auto" src="{{ asset('build/images/qizuna_vertical.png') }}" alt="{{ application_name }}">
             </a>
         </div>
         <div class="mt-6 w-full flex-1 space-y-1 mb-auto px-2">
             {% include '/partials/menu-item.html.twig' with  {link:"#" , text:"Dashboard" , icon:"fa-solid fa-2x fa-gauge-high"} %}
-            {% include '/partials/menu-item.html.twig' with  {link:path('app_customer_index') , text:"Clients" , icon:"fa-solid fa-2x fa-users"} %}
-            {% include '/partials/menu-item.html.twig' with  {link:path('app_device_index') , text:"Chaudières" , icon:"fa-solid fa-2x fa-fire"} %}
-            {% include '/partials/menu-item.html.twig' with  {link:"#" , text:"Analyses" , icon:"fa-solid fa-2x fa-chart-line"} %}
+            {% include '/partials/menu-item.html.twig' with  {link:"#" , text:"Clients" , icon:"fa-solid fa-2x fa-users"} %}
+            {% include '/partials/menu-item.html.twig' with  {link:"#" , text:"Agenda" , icon:"fa-solid fa-2x fa-calendar"} %}
+            {% include '/partials/menu-item.html.twig' with  {link:"#" , text:"Statistiques" , icon:"fa-solid fa-2x fa-chart-line"} %}
             {% include '/partials/menu-item.html.twig' with  {link:"#" , text:"Réglages" , icon:"fa-solid fa-2x fa-cog"} %}
         </div>
         <div class="flex flex-shrink-0 flex-col p-2 text-center">
