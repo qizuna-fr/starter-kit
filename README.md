@@ -37,6 +37,18 @@ make first-install
 Votre navigateur devrait s'ouvrir et afficher l'écran de connexion de l'application 😀.
 A vous de commencer votre travail maintenant !
 
+## Les outils qualité (QA)
+
+S'il est possible d'appeller les outils qualité directement via docker, il est également possible de les 
+appeler via des commandes préparées dans le fichier `Makefile`
+
+### Les vérifications avec `before-commit`
+La commande la plus utile sera certainement `make before-commit`. Cette commande lancera plusieurs outils QA les uns après les autres et lancera au final la suite de tests.
+
+### Les tests avec `make tests` et `make tests-coverage`
+Une autre commande utile : `make tests` ou `make test-coverage`. Ces deux commandes reconstruisent la base de données de test, et lancent la suite de tests sur le projet.
+
+
 ### Problème connus
 
 #### Ports Docker déjà utilisés
