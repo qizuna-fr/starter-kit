@@ -85,6 +85,18 @@
             "config/packages/sensio_framework_extra.yaml"
         ]
     },
+    "sentry/sentry-symfony": {
+        "version": "4.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "4.0",
+            "ref": "27b184582b31a79a21f461df82fd8a0eaba658ff"
+        },
+        "files": [
+            "config/packages/sentry.yaml"
+        ]
+    },
     "symfony/console": {
         "version": "6.1",
         "recipe": {
