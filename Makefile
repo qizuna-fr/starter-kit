@@ -263,7 +263,7 @@ qa-audit: ## Run composer audit.
 
 ## === 🔎  TESTS =================================================
 tests: ## Run tests.
-	APP_ENV=test  $(SYMFONY_CONSOLE) doctrine:fixtures:load --no-interaction --group=limited; \
+	APP_ENV=test  $(SYMFONY_CONSOLE) doctrine:fixtures:load --no-interaction ; \
 	$(PHPUNIT) --testdox
 .PHONY: tests
 
@@ -280,7 +280,7 @@ reset-tests: ## Resets the database and runs tests
 .PHONY: reset-tests
 
 tests-coverage: ## Run tests with coverage.
-	APP_ENV=test  $(SYMFONY_CONSOLE) doctrine:fixtures:load --no-interaction --group=limited; \
+	APP_ENV=test  $(SYMFONY_CONSOLE) doctrine:fixtures:load --no-interaction ; \
 	XDEBUG_MODE=coverage $(PHPUNIT) --coverage-html var/coverage
 .PHONY: tests-coverage
 #---------------------------------------------#
