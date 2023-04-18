@@ -3,7 +3,7 @@
 
   Off-canvas menu for mobile, show/hide based on off-canvas menu state.
 -->
-<div class="relative z-20 md:hidden" role="dialog" aria-modal="true">
+<div class="relative z-20 md:hidden hidden" role="dialog" aria-modal="true" {{ stimulus_target('mobilemenu' , 'container') }}>
     <!--
       Off-canvas menu backdrop, show/hide based on off-canvas menu state.
 
@@ -14,9 +14,16 @@
         From: "opacity-100"
         To: "opacity-0"
     -->
-    <div class="fixed inset-0 bg-gray-600 bg-opacity-75" {{ stimulus_target('layout/menu' , 'menuBackdrop') }}></div>
+    <div class="fixed inset-0 bg-gray-600 bg-opacity-75" {{ stimulus_target('mobilemenu' , 'backdrop') }}
+         data-transition-enter="transition-opacity ease-linear duration-300"
+         data-transition-enter-start="opacity-0"
+         data-transition-enter-end="opacity-100"
+         data-transition-leave="transition-opacity ease-linear duration-300"
+         data-transition-leave-start="opacity-100"
+         data-transition-leave-end="opacity-0"
+    ></div>
 
-    <div class="fixed inset-0 z-40 flex" {{ stimulus_target('layout/menu' , 'menuContainer') }}>
+    <div class="fixed inset-0 z-40 flex" >
         <!--
           Off-canvas menu, show/hide based on off-canvas menu state.
 
@@ -27,7 +34,14 @@
             From: "translate-x-0"
             To: "-translate-x-full"
         -->
-        <div class="relative flex w-full max-w-xs flex-1 flex-col bg-gray-800 pt-5 pb-4">
+        <div class="relative flex w-full max-w-xs flex-1 flex-col bg-gray-800 pt-5 pb-4" {{ stimulus_target('mobilemenu' , 'menu') }}
+             data-transition-enter="transition ease-in-out duration-300 transform"
+             data-transition-enter-start="-translate-x-full"
+             data-transition-enter-end="translate-x-0"
+             data-transition-leave="transition ease-in-out duration-300 transform"
+             data-transition-leave-start="translate-x-0"
+             data-transition-leave-end="-translate-x-full"
+        >
             <!--
               Close button, show/hide based on off-canvas menu state.
 
@@ -39,7 +53,7 @@
                 To: "opacity-0"
             -->
             <div class="absolute top-1 right-0 -mr-14 p-1">
-                <button type="button" class="flex h-12 w-12 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-white"  {{ stimulus_action('layout/menu' , 'close') }}>
+                <button type="button" class="flex h-12 w-12 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-white"  {{ stimulus_action('mobilemenu' , 'close') }}>
                     <!-- Heroicon name: outline/x-mark -->
                     <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -49,7 +63,7 @@
             </div>
 
             <div class="flex flex-shrink-0 items-center px-4">
-                <img class="h-24 w-auto" src="{{ asset('build/images/TEE_Logo03B__.png') }}" alt="Tech Eaux Energies">
+                <img class="h-24 w-auto" src="{{ asset('build/images/qizuna_vertical.png') }}" alt="Qizuna">
             </div>
             <div class="mt-5 h-0 flex-1 overflow-y-auto px-2">
                 <nav class="flex h-full flex-col">

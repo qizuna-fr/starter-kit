@@ -38,7 +38,7 @@
       <body class="h-full overflow-hidden">
       ```
     -->
-    <div class="flex h-full"  {{ stimulus_controller('layout/menu')}}>
+    <div class="flex h-full" {{ stimulus_controller('mobilemenu') }}>
 
         {%  include 'partials/menu-mobile.html.twig' %}
         {%  include 'partials/menu-large.html.twig' %}
@@ -47,7 +47,7 @@
         <div class="flex flex-1 flex-col overflow-hidden" >
             <header class="w-full">
                 <div class="relative z-10 flex h-16 flex-shrink-0 border-b border-gray-200 bg-white shadow-sm">
-                    <button type="button" class="border-r border-gray-200 px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden" {{ stimulus_action('layout/menu' , 'open') }}>
+                    <button type="button" class="border-r border-gray-200 px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden" {{ stimulus_action('mobilemenu' , 'open') }}>
                         <span class="sr-only">Ouvrir le menu</span>
                         <!-- Heroicon name: outline/bars-3-bottom-left -->
                         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
