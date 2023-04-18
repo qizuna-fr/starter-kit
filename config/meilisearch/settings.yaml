@@ -1,0 +1,39 @@
+#PhoneCall:
+#  displayedAttributes: [ "id", "caller" , "message" , "emailRecipient" , "registeredBy", "contact"]
+#  searchableAttributes: [ "id", "caller" , "message" , "emailRecipient" , "registeredBy", "contact"]
+#  sortableAttributes: ["registered_at" , 'acknowledged_at']
+
+
+# This Yaml file must be in the same structure than the json response given on call the meilisearch
+# http://localhost/{index}/settings
+
+#Example :
+#MyIndex:
+#  displayedAttributes: ["*"],
+#  searchableAttributes: ["*"],
+#  filterableAttributes: [],
+#  sortableAttributes: [],
+#  rankingRules: [
+#    "words",
+#    "typo",
+#    "proximity",
+#    "attribute",
+#    "sort",
+#    "exactness"
+#  ]
+#  stopWords: [],
+#  synonyms: [],
+#  distinctAttribute: null,
+#  typoTolerance:
+#    enabled: true,
+#    minWordSizeForTypos:
+#      oneTypo: 5,
+#      twoTypos: 9
+#    disableOnWords: [],
+#    disableOnAttributes: []
+#  faceting:
+#    maxValuesPerFacet: 100
+#  pagination:
+#    maxTotalHits: 1000
+#
+
