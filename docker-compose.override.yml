@@ -21,7 +21,7 @@ services:
     ports:
       - "7700:7700"
     environment:
-      MEILI_MASTER_KEY: qizuna
+      MEILI_MASTER_KEY: mymeilikey
       MEILI_CONFIG_FILE_PATH: /config/config.toml
     volumes:
       - ./var/meili_data:/meili_data
