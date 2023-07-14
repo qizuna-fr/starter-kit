@@ -15,6 +15,14 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Entity'
                 prefix: 'App\Entity'
                 alias: App
+#           ExampleContext:
+#                is_bundle: false
+#                dir: '%kernel.project_dir%/Domain/ExampleContext/Adapters/Secondary/Entities'
+#                prefix: 'Domain\ExampleContext\Adapters\Secondary\Entities'
+#                alias: ExampleContext
+        dql:
+            string_functions:
+                JSON_CONTAINS: Scienta\DoctrineJsonFunctions\Query\AST\Functions\Mysql\JsonContains
 
 when@test:
     doctrine:

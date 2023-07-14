@@ -1,12 +1,9 @@
 <?php
 
-
 namespace App\Service\SearchEngine;
-
 
 use Meilisearch\Client;
 use Meilisearch\Contracts\SearchQuery;
-
 use Meilisearch\Endpoints\Indexes;
 
 use function array_map;
@@ -14,8 +11,6 @@ use function str_starts_with;
 
 final class SearchEngineRequester
 {
-
-
     private array $indexes;
 
     public function __construct(private Client $meilisearch)
@@ -23,7 +18,7 @@ final class SearchEngineRequester
         $this->indexes = array_filter(
             $this->meilisearch->getIndexes()->getResults(),
             function ($index) {
-                return str_starts_with( $index->getUid(), 'techeaux');
+                return str_starts_with($index->getUid(), 'techeaux');
             },
         );
     }

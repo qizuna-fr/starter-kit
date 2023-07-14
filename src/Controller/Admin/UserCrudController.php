@@ -15,9 +15,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Faker\Provider\Text;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-
 use Symfony\Component\Security\Core\Role\RoleHierarchyInterface;
 use Symfony\Component\Security\Core\Security;
 
@@ -31,12 +29,6 @@ use function ucfirst;
 #[IsGranted('ROLE_ADMIN')]
 class UserCrudController extends AbstractCrudController
 {
-
-
-    public function __construct(private RoleHierarchyInterface $roleHierarchy)
-    {
-    }
-
     public static function getEntityFqcn(): string
     {
         return User::class;

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Components;
 
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
@@ -13,22 +12,21 @@ final class AnimatedLink
     public string $color;
     public string $transition;
 
-    public function mount($color){
+    public function mount(string $color): void
+    {
 
-        switch ($color){
-            case "green" :
-                $this->transition =  " from-brandGreen-500 to-brandGreen-500";
+        switch ($color) {
+            case "primary":
+                $this->transition =  " from-brandPrincipal-500 to-brandPrincipal-500";
                 break;
-            case "blue" :
-                $this->transition = " from-brandBlue-500 to-brandBlue-500";
+            case "secondary":
+                $this->transition = " from-brandSecondary-500 to-brandSecondary-500";
                 break;
-            case "orange" :
-                $this->transition = " from-brandOrange-500 to-brandOrange-500";
+            case "third":
+                $this->transition = " from-brandThird-500 to-brandThird-500";
                 break;
             default:
                 $this->transition = " from-gray-500 to-gray-500";
         }
-
-
     }
 }

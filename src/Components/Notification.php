@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Components;
 
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
@@ -28,7 +27,7 @@ final class Notification
         'error' => 'Erreur',
     ];
 
-    public function mount(string $type = "success")
+    public function mount(string $type = "success"): void
     {
         $this->color = self::COLORS[$type];
         $this->title = self::TITLES[$type];

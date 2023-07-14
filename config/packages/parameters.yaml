@@ -1,2 +1,5 @@
 parameters:
-  app.application_name: "Qizuna Starter Kit"
+
+  app.application_name: '%env(resolve:APPLICATION_NAME)%'
+  app.email_sender: '%env(resolve:EMAIL_SENDER)%'
+  app.email_sender_name: '%env(resolve:EMAIL_SENDER_NAME)%'

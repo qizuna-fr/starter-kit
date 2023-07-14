@@ -1,12 +1,9 @@
 <?php
 
-
 namespace App\Service\SearchEngine;
-
 
 use App\Entity\DeviceReference;
 use Meilisearch\Client;
-
 use Symfony\Component\Serializer\SerializerInterface;
 
 use function get_class;
@@ -15,7 +12,6 @@ use function strtolower;
 
 final class SearchEngineIndexer
 {
-
     public const SERIALIZING_GROUP = 'search_engine';
 
 
@@ -32,18 +28,19 @@ final class SearchEngineIndexer
             ->addDocumentsJson($json);
     }
 
-    public function indexMultiple(array $objects){
-        foreach ( $objects as $object){
+    public function indexMultiple(array $objects)
+    {
+        foreach ($objects as $object) {
             $this->indexOne($object);
         }
     }
 
-    public function removeAllIndexes(){
+    public function removeAllIndexes()
+    {
 
         $indexes = $this->client->getIndexes();
-        foreach ($indexes as $index){
+        foreach ($indexes as $index) {
             $this->client->deleteIndex($index->getUid());
         }
-
     }
 }

@@ -15,8 +15,6 @@ use Symfony\Component\Asset\Package;
 
 class DashboardController extends AbstractDashboardController
 {
-
-
     public function __construct(private AdminUrlGenerator $urlGenerator)
     {
     }
@@ -30,7 +28,9 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         $package = new Package(
-            new JsonManifestVersionStrategy(Path::join($this->getParameter('kernel.project_dir'), "public/build/manifest.json"))
+            new JsonManifestVersionStrategy(
+                Path::join($this->getParameter('kernel.project_dir'), "public/build/manifest.json")
+            )
         );
 
         $image = $package->getUrl("build/images/login_logo.png");
@@ -40,13 +40,12 @@ class DashboardController extends AbstractDashboardController
             ->renderContentMaximized()
             ->setTitle('<img src="' . $image . '">')
             ->setFaviconPath($favicon);
-
     }
 
     public function configureMenuItems(): iterable
     {
         //yield MenuItem::linkToDashboard('Dashboard', 'fa fa-dashboard');
-        yield MenuItem::linkToCrud('Utilisateurs' , 'fa fa-users', User::class);
+        yield MenuItem::linkToCrud('Utilisateurs', 'fa fa-users', User::class);
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
 }

@@ -143,7 +143,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setActivatedAt(?DateTimeInterface $activatedAt): self
     {
-        if($activatedAt instanceof DateTimeImmutable){
+        if ($activatedAt instanceof DateTimeImmutable) {
             $this->activatedAt = $activatedAt;
             return $this;
         }
@@ -152,7 +152,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function isActive(){
+    public function isActive()
+    {
         return $this->activatedAt !== null || $this->activatedAt > (new DateTimeImmutable());
     }
 
