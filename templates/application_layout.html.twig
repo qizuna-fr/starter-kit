@@ -85,30 +85,6 @@ plugins: [
                         <div class="mx-auto">
 
 
-                            <!-- Replace with your content -->
-                            <div class="mt-4">
-                                <div class="relative bg-brandPrincipal-500 pb-48 -mt-8 z-auto py-24">
-
-                                    <div class="absolute inset-0">
-
-                                        <img class="h-full w-full object-cover blur-sm"
-                                             src="https://images.unsplash.com/photo-1606765962248-7ff407b51667?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=60&&sat=-100"
-                                             alt="">
-                                        <div class="absolute inset-0 bg-brandPrincipal-500 mix-blend-multiply "
-                                             aria-hidden="true">
-
-                                            {% if app.request.requestUri == "/" %}
-                                                <div class="relative text-5xl tracking-tighter top-12 left-24 font-bold  text-white">
-                                                    {{ app.user.username }}
-                                                </div>
-                                            {% endif %}
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
                             {% if block('breadcrumb') %}
                                 <div class="m-4 p-4">
                                     {% block breadcrumb %}{% endblock %}
