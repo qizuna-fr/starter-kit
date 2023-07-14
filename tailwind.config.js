@@ -26,11 +26,16 @@ module.exports = {
             '5xl': '3.052rem',
             '6xl': '3.815rem',
             '7xl': '4,768rem',
+            '8xl': '5.960rem',
+            '9xl': '7.450rem',
+            '10xl': '9.313rem',
+            '11xl': '11.641rem',
+            '12xl': '14.551rem',
         },
         colors: {
-            'qizunaOrange': customColors.qizunaOrange,
-            'qizunaBlue': customColors.qizunaBlue,
-            'qizunaGray': customColors.qizunaGray,
+            'brandPrincipal': customColors.qizunaOrange,
+            'brandSecondary': customColors.qizunaBlue,
+            'brandThird': customColors.qizunaGray,
             ...colors
 
         },

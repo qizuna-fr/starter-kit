@@ -2,20 +2,26 @@ version: '3'
 
 services:
 
-###> symfony/mailer ###
+  ###> symfony/mailer ###
   mailer:
-    image: schickling/mailcatcher
+    image: schickling/mailcatcher\
     ports:
       - "1025:1025"
       - "1080:1080"
-###< symfony/mailer ###
+  ###< symfony/mailer ###
+
+  gotenberg:
+    container_name: gotenberg
+    image: gotenberg/gotenberg:7
+    ports:
+      - "3000:3000"
 
   meilisearch:
     image: getmeili/meilisearch
     ports:
       - "7700:7700"
     environment:
-      MEILI_MASTER_KEY : qizuna
+      MEILI_MASTER_KEY: qizuna
       MEILI_CONFIG_FILE_PATH: /config/config.toml
     volumes:
       - ./var/meili_data:/meili_data

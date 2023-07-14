@@ -33,7 +33,7 @@ class DashboardController extends AbstractDashboardController
             new JsonManifestVersionStrategy(Path::join($this->getParameter('kernel.project_dir'), "public/build/manifest.json"))
         );
 
-        $image = $package->getUrl("build/images/qizuna.png");
+        $image = $package->getUrl("build/images/login_logo.png");
         $favicon = $package->getUrl("build/images/favicon.png");
 
         return Dashboard::new()

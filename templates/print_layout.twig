@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %} - Tech Eaux Energies</title>
+    <link rel="icon"
+          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+    {#    {% block stylesheets %} #}
+    {#        {{ encore_entry_link_tags('app') }} #}
+    {#    {% endblock %} #}
+
+
+    {#    {% block javascripts %} #}
+    {#        {{ encore_entry_script_tags('app') }} #}
+    {#    {% endblock %} #}
+</head>
+<body>
+
+
+<!--
+This example requires some changes to your config:
+
+```
+// tailwind.config.js
+module.exports = {
+// ...
+plugins: [
+  // ...
+  require('@tailwindcss/forms'),
+],
+}
+```
+-->
+<!--
+  This example requires updating your template:
+
+  ```
+  <html class="h-full bg-gray-50">
+  <body class="h-full overflow-hidden">
+  ```
+-->
+{% apply inline_css(source('@styles/print.css')) %}
+    <div class="flex h-full">
+
+        <!-- Content area -->
+        <div>
+
+            <div style="display: flex; flex-direction: row; align-items: center; ">
+            <div>
+                <img class=logo" src="data:image/png;base64,{{ logo }}" alt="TechEaux Energies">
+                <p class="mb-32 text-sm" style="font-size:10px">
+                    ZAE HEIDEN <br>
+                    3 RUE DE BELGIQUE <br>
+                    68310 WITTELSHEIM <br>
+                    FRANCE <br>
+                    tel : 03 63 53 48 02 <br>
+                    mail : contact@techeauxenergies.com
+                </p>
+            </div>
+
+            <div style="margin-left: 6cm">
+                {% block customer %}
+
+                {% endblock %}
+            </div>
+            </div>
+
+            <!-- Main content -->
+            {% block body %}{% endblock %}
+        </div>
+    </div>
+
+{% endapply %}
+
+
+</body>
+</html>

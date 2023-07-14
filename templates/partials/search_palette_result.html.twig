@@ -2,7 +2,7 @@
     <ul class="mt-2 text-sm text-gray-800">
 
         {% for item in data %}
-            <li class="cursor-default select-none px-4 py-2 hover:bg-qizunaBlue-600 hover:text-white flex justify-between" id="option-1" role="option" tabindex="-1">
+            <li class="cursor-default select-none px-4 py-2 hover:bg-brandSecondary-600 hover:text-white flex justify-between" id="option-1" role="option" tabindex="-1">
                 <a href="{{ item.link | default("#") }}">
                     {{ item.label }}
                 </a>

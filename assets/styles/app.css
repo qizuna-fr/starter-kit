@@ -7,7 +7,7 @@
 
 
 .login__background{
-    @apply bg-qizunaGray-500;
+    @apply bg-brandThird-500;
 }
 
 h1{
@@ -25,19 +25,19 @@ img.logo{
 }
 
 .menu__menu-item:hover {
-    @apply  bg-qizunaBlue-500 text-white
+    @apply  bg-brandSecondary-500 text-white
 }
 
 .menu__menu-item.active{
-    @apply bg-qizunaBlue-500
+    @apply bg-brandSecondary-500
 }
 
 .splitscreen__input{
-    @apply block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 focus:border-qizunaOrange-500 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40
+    @apply block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700 focus:border-brandPrincipal-500 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40
 }
 
 .splitscreen__button{
-    @apply w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-qizunaBlue-500 rounded-md hover:bg-qizunaOrange-500 focus:outline-none focus:bg-emerald-400 focus:ring focus:ring-emerald-300 focus:ring-opacity-50
+    @apply w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-brandSecondary-500 rounded-md hover:bg-brandPrincipal-500 focus:outline-none focus:bg-emerald-400 focus:ring focus:ring-emerald-300 focus:ring-opacity-50
 }
 
 .splitscreen__label{
@@ -49,11 +49,11 @@ img.logo{
 }
 
 .app__form_input{
-    @apply mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-qizunaBlue-500 focus:ring-qizunaBlue-500 sm:text-sm;
+    @apply mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-brandSecondary-500 focus:ring-brandSecondary-500 sm:text-sm;
 }
 
 .app_primary_button{
-    @apply inline-flex justify-center rounded-md border border-transparent bg-qizunaBlue-500 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-qizunaBlue-700 focus:outline-none focus:ring-2 focus:ring-qizunaBlue-500 focus:ring-offset-2
+    @apply inline-flex justify-center rounded-md border border-transparent bg-brandSecondary-500 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-brandSecondary-700 focus:outline-none focus:ring-2 focus:ring-brandSecondary-500 focus:ring-offset-2
 }
 
 .app_secondary_button{
@@ -78,7 +78,7 @@ img.logo{
     }
 
     .menu__menu-item:hover{
-        @apply bg-qizunaBlue-500 text-white
+        @apply bg-brandSecondary-500 text-white
     }
 }
 
@@ -91,6 +91,18 @@ a.tab{
 
 }
 
+a.tab span{
+    @apply bg-gray-100 text-gray-900
+}
+
 a.tab.active {
-    @apply border-qizunaOrange-500 text-qizunaOrange-600 inline-flex items-center py-4 px-1 border-b-2 font-medium text-sm;
+    @apply border-brandPrincipal-500 text-brandPrincipal-600 inline-flex items-center py-4 px-1 border-b-2 font-medium text-sm;
+}
+
+
+
+label.required:after {
+    color: #e32;
+    content: ' *';
+    display:inline;
 }
