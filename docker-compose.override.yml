@@ -11,13 +11,13 @@ services:
   ###< symfony/mailer ###
 
   gotenberg:
-    container_name: gotenberg_qizuna
+    container_name: gotenberg_frida
     image: gotenberg/gotenberg:7
     ports:
       - "3000:3000"
 
   meilisearch:
-    container_name: meilisearch_qizuna
+    container_name: meilisearch_frida
     image: getmeili/meilisearch
     ports:
       - "7700:7700"

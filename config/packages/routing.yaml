@@ -10,4 +10,4 @@ when@prod:
     framework:
         router:
             strict_requirements: null
-            default_uri: https://techeauxenergies.qizuna.app
+            default_uri: https://dev.qizuna.app

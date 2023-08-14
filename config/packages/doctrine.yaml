@@ -10,16 +10,16 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
         auto_mapping: true
         mappings:
-            App:
-                is_bundle: false
-                dir: '%kernel.project_dir%/src/Entity'
-                prefix: 'App\Entity'
-                alias: App
-#           ExampleContext:
+#            App:
 #                is_bundle: false
-#                dir: '%kernel.project_dir%/Domain/ExampleContext/Adapters/Secondary/Entities'
-#                prefix: 'Domain\ExampleContext\Adapters\Secondary\Entities'
-#                alias: ExampleContext
+#                dir: '%kernel.project_dir%/src/Entity'
+#                prefix: 'App\Entity'
+#                alias: App
+            AuthContext:
+                is_bundle: false
+                dir: '%kernel.project_dir%/Domain/AuthContext/Adapters/Secondary/Entities'
+                prefix: 'Domain\AuthContext\Adapters\Secondary\Entities'
+                alias: AuthContext
         dql:
             string_functions:
                 JSON_CONTAINS: Scienta\DoctrineJsonFunctions\Query\AST\Functions\Mysql\JsonContains

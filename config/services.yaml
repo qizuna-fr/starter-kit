@@ -24,7 +24,11 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+    Domain\:
+        resource: '../Domain/'
 
+    Infrastructure\:
+        resource: '../Infrastructure/'
 #    App\Service\CsvImporter\CsvDeviceListImporter:
 #        arguments:
 #            $manager: "@doctrine.orm.entity_manager"
