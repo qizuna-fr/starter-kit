@@ -2,11 +2,11 @@
 
 namespace Domain\AuthContext\Adapters\Secondary\Repositories;
 
-use Domain\AuthContext\Adapters\Secondary\Entities\User;
 use DateTimeImmutable;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\Persistence\ManagerRegistry;
+use Infrastructure\Entities\User;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;

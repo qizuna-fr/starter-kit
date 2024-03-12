@@ -13,6 +13,35 @@
 
 // uses(Tests\TestCase::class)->in('Feature');
 
+use Doctrine\ORM\EntityManagerInterface;
+use Liip\TestFixturesBundle\Services\DatabaseToolCollection;
+use Liip\TestFixturesBundle\Services\DatabaseTools\AbstractDatabaseTool;
+use PHPUnit\Framework\Assert;
+use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+
+uses()->group('unit')->in('Domain/AuthContext/Unit');
+
+uses(KernelTestCase::class)->beforeEach(function () {
+    $this->bootedKernel = $this::bootKernel(["environment" => "test"]);
+    $container = $this->bootedKernel->getContainer();
+    $this->entityManager = $container->get('doctrine')->getManager();
+    $this->databaseTool = static::getContainer()->get(DatabaseToolCollection::class)->get();
+    cleanDatabase($this->entityManager, $this->databaseTool);
+})
+    ->group('integration')
+    ->in('Domain/AuthContext/Integration');
+
+
+uses(WebTestCase::class)->beforeEach(function () {
+    $this->client = $this::createClient(["environment", "test"]);
+    $container = $this->client->getContainer();
+    $this->entityManager = $container->get('doctrine')->getManager();
+    $this->databaseTool = static::getContainer()->get(DatabaseToolCollection::class)->get();
+    cleanDatabase($this->entityManager, $this->databaseTool);
+})->group('e2e')->in('DDomain/AuthContext/E2E');
+
+
 /*
 |--------------------------------------------------------------------------
 | Expectations
@@ -28,6 +57,32 @@ expect()->extend('toBeOne', function () {
     return $this->toBe(1);
 });
 
+expect()->extend('toBeDifferentFrom', function ($expected) {
+    Assert::assertNotSame($expected, $this->value);
+    return $this;
+});
+
+expect()->extend('toContainOneOfType', function (string $class) {
+    $bool = false;
+
+    foreach ($this->value as $value) {
+        if ($value instanceof $class) {
+            $bool = true;
+        }
+    }
+
+    Assert::assertTrue($bool, "Failed asserting that array contains one element of type {$class}");
+    return $this;
+});
+
+expect()->extend('toMatchUuid', function () {
+    Assert::matchesRegularExpression('/^[a-f\d]{8}(-[a-f\d]{4}){4}[a-f\d]{8}$/i', $this->value);
+    return $this;
+});
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Functions
@@ -39,7 +94,7 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
+function cleanDatabase(EntityManagerInterface $entityManager, AbstractDatabaseTool $databaseTool): void
 {
-    // ..
+    $databaseTool->loadAllFixtures();
 }

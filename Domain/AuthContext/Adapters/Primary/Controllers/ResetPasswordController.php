@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Domain\AuthContext\Adapters\Primary\Controllers;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Domain\AuthContext\Adapters\Secondary\Entities\User;
 use Domain\AuthContext\Adapters\Secondary\Repositories\UserRepository;
+use Infrastructure\Entities\User;
 use Infrastructure\Form\ChangePasswordFormType;
 use Infrastructure\Form\ResetPasswordRequestFormType;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;

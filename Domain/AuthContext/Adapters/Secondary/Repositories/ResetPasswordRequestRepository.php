@@ -4,7 +4,7 @@ namespace Domain\AuthContext\Adapters\Secondary\Repositories;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Domain\AuthContext\Adapters\Secondary\Entities\ResetPasswordRequest;
+use Infrastructure\Entities\ResetPasswordRequest;
 use SymfonyCasts\Bundle\ResetPassword\Model\ResetPasswordRequestInterface;
 use SymfonyCasts\Bundle\ResetPassword\Persistence\Repository\ResetPasswordRequestRepositoryTrait;
 use SymfonyCasts\Bundle\ResetPassword\Persistence\ResetPasswordRequestRepositoryInterface;

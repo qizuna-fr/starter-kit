@@ -3,11 +3,11 @@
 namespace Domain\AuthContext\Adapters\Primary\Controllers\Admin;
 
 
-use Domain\AuthContext\Adapters\Secondary\Entities\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
+use Infrastructure\Entities\User;
 use Symfony\Component\Asset\Package;
 use Symfony\Component\Asset\VersionStrategy\JsonManifestVersionStrategy;
 use Symfony\Component\Filesystem\Path;
