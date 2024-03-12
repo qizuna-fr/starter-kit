@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 /** @noinspection PhpFieldAssignmentTypeMismatchInspection */
 
-namespace Domain\AuthContext\Adapters\Secondary\Entities;
+namespace Infrastructure\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
 use Domain\AuthContext\Adapters\Secondary\Repositories\ResetPasswordRequestRepository;

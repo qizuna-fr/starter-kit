@@ -23,9 +23,9 @@ final class User extends Fixture
         $manager->flush();
     }
 
-    private function generateUser(string $username, bool $isActive = true, array $roles = []): \Domain\AuthContext\Adapters\Secondary\Entities\User
+    private function generateUser(string $username, bool $isActive = true, array $roles = []): \Infrastructure\Entities\User
     {
-        $user = new \Domain\AuthContext\Adapters\Secondary\Entities\User();
+        $user = new \Infrastructure\Entities\User();
         $user->setUsername($username);
         $user->setPassword($this->userPasswordHasher->hashPassword($user, 'password'));
         $user->setEmail("{$username}@email.fr");

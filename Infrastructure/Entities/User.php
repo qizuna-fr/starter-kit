@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Domain\AuthContext\Adapters\Secondary\Entities;
+namespace Infrastructure\Entities;
 
 
-use DateTime;
 use DateTimeImmutable;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
