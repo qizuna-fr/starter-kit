@@ -70,6 +70,7 @@
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.4",
         "fakerphp/faker": "^1.20",
+        "liip/test-fixtures-bundle": "*",
         "pestphp/pest": "^2.0",
         "roave/security-advisories": "dev-latest",
         "symfony/browser-kit": "7.0.*",

@@ -18,9 +18,9 @@ doctrine:
 #                alias: App
             AuthContext:
                 is_bundle: false
-                dir: '%kernel.project_dir%/Domain/AuthContext/Adapters/Secondary/Entities'
-                prefix: 'Domain\AuthContext\Adapters\Secondary\Entities'
-                alias: AuthContext
+                dir: '%kernel.project_dir%/Infrastructure/Entities'
+                prefix: 'Infrastructure\Entities'
+                alias: InfrastructureEntities
         dql:
             string_functions:
                 JSON_CONTAINS: Scienta\DoctrineJsonFunctions\Query\AST\Functions\Mysql\JsonContains
