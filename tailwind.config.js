@@ -41,8 +41,8 @@ module.exports = {
         },
         extend: {
             fontFamily: {
-                text: ['"Cambay"', ...defaultTheme.fontFamily.sans],
-                title: ['"Ubuntu"', ...defaultTheme.fontFamily.sans]
+                text: ['Rubik', ...defaultTheme.fontFamily.sans],
+                title: ['"Rubik"' , ...defaultTheme.fontFamily.sans]
             }
         },
     },

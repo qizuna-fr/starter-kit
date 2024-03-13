@@ -1,17 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Cambay&family=Ubuntu&display=swap');
 @import '@fortawesome/fontawesome-free/css/all.css';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+html{
+    @apply font-title;
+}
 
 .login__background{
     @apply bg-brandThird-500;
 }
 
 h1{
-    @apply text-2xl font-bold sm:truncate sm:text-3xl sm:tracking-tight
+    @apply text-2xl sm:truncate sm:text-3xl sm:tracking-tight font-title font-extralight
 }
 
 
