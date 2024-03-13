@@ -28,3 +28,26 @@ yarn-error.log
 /phpcs.xml
 ###< squizlabs/php_codesniffer ###
 /migrations/
+/.phpunit.cache/code-coverage/2f3aba8ef2082911bfde47f2735c6b04
+/.phpunit.cache/code-coverage/3c3d94b3e422c7b988f84e21febee108
+/.phpunit.cache/code-coverage/7af82350657d7887efe72870d2f91e7b
+/.phpunit.cache/code-coverage/7df841daec7aa3c7f9623a6884f594ef
+/.phpunit.cache/code-coverage/9e35fb3dd911e4042948bb613e387e04
+/.phpunit.cache/code-coverage/28d662eb9dcb9a31d229bf2206fc5e04
+/.phpunit.cache/code-coverage/77b39837d2471209c5eefba85207abf5
+/.phpunit.cache/code-coverage/113af225dbebb84374efdd9fd4e471d9
+/.phpunit.cache/code-coverage/408c326c73c003074ff511e6ed12ef8f
+/.phpunit.cache/code-coverage/941d9c88f1fdf1e6893b82556fb26816
+/.phpunit.cache/code-coverage/5586b581f9f0278891d52e99c5109ab5
+/.phpunit.cache/code-coverage/213547e53eb0eac83cc0b1a6c3d32b5e
+/.phpunit.cache/code-coverage/61200715c58704e061dc870b8cfba884
+/.phpunit.cache/code-coverage/a1778e15f7a7666b7b65305aa781f266
+/.phpunit.cache/code-coverage/c4de556b80968158a48034edf67a798e
+/.phpunit.cache/code-coverage/d300382ec22bf851d5d2c915a611a6b5
+/.phpunit.cache/code-coverage/e73aa7554a6e2790b4f3ee5dbeff99a6
+/.phpunit.cache/code-coverage/ebc9cbecb3ff8662f688f47c36bd8cd5
+/.phpunit.cache/code-coverage/ee985b1851f3c34e6716e1b026276e45
+/.phpunit.cache/code-coverage/f3f8f4cae925535c5c1c65ccabfc13e7
+/.phpunit.cache/code-coverage/fd58339415cfceb16da22991efc7f784
+/.phpunit.cache/test-results
+/phpunit.xml.dist.bak
