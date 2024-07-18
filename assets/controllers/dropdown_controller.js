@@ -1,5 +1,5 @@
 import {Controller} from "@hotwired/stimulus";
-import {enter, leave, toggle} from 'el-transition';
+import {leave, toggle} from 'el-transition';
 
 export default class extends Controller {
 
@@ -10,6 +10,8 @@ export default class extends Controller {
         menuItems.forEach(item => {
             item.addEventListener('click', this.onSelected.bind(this));
         });
+
+
     }
 
     toggle(e) {
@@ -18,8 +20,9 @@ export default class extends Controller {
     }
 
     onSelected(e) {
-       leave(this.menuTarget)
+        leave(this.menuTarget)
     }
+
 
 
 

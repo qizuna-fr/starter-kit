@@ -6,6 +6,10 @@ export default class extends Controller {
 
     static targets = ['main' , 'blur' , 'panel' , 'content' , 'spinner']
 
+    connect() {
+        this.handleKeydown = this.handleKeydown.bind(this);
+    }
+
     open(event) {
 
         event.preventDefault();
@@ -20,6 +24,8 @@ export default class extends Controller {
             enter(this.mainTarget)
             enter(this.blurTarget)
             enter(this.panelTarget)
+
+            document.addEventListener('keydown', this.handleKeydown);
         });
     }
 
@@ -27,6 +33,15 @@ export default class extends Controller {
         leave(this.blurTarget)
         leave(this.panelTarget)
         leave(this.mainTarget)
+
+        document.removeEventListener('keydown', this.handleKeydown);
+
+    }
+
+    handleKeydown(event) {
+        if (event.key === 'Escape') {
+            this.close();
+        }
     }
 
 }
