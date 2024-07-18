@@ -6,5 +6,5 @@ use Domain\AuthContext\BusinessLogic\Entities\User;
 
 interface AuthenticationGateway
 {
-    public function authenticate(string $username, string $password): ?User;
+    public function authenticateFromCredentials(string $username, string $password): ?User;
 }

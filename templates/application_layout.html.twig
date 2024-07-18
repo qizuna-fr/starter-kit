@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
-<body class="h-full overflow-hidden">
+<body class="h-full overflow-hidden" {{ stimulus_controller('mobilemenu') }} >
 
 
 <!--
@@ -43,7 +43,7 @@ plugins: [
   <body class="h-full overflow-hidden">
   ```
 -->
-<div class="flex h-full" {{ stimulus_controller('mobilemenu') }}>
+<div class="flex h-full"  {% if block("stimulus_controllers") %} {%  block stimulus_controllers %}{% endblock %} {% endif %}  >
 
     {% include 'partials/menu-mobile.html.twig' %}
     {% include 'partials/menu-large.html.twig' %}
@@ -78,8 +78,6 @@ plugins: [
         <!-- Main content -->
         <!-- Main content -->
         <div class="flex flex-1 items-stretch overflow-hidden">
-
-
             <main class="flex-1 overflow-y-auto">
                 <!-- Primary column -->
 
@@ -108,6 +106,10 @@ plugins: [
 
         </div>
     </div>
+
+
+    <div {{ stimulus_target('modal' , 'container') }}></div>
+    {{ include('partials/slide_panel/slide_panel.html.twig') }}
 </div>
 
 {% for message in app.flashes('success') %}

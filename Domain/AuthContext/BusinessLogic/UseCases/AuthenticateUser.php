@@ -19,7 +19,7 @@ final class AuthenticateUser
 
     public function __invoke(string $username, string $password){
 
-        $response = $this->authenticationGateway->authenticate($username, $password);
+        $response = $this->authenticationGateway->authenticateFromCredentials($username, $password);
 
         if($response === null){
             throw new InvalidCredentialsException('Invalid credentials');

@@ -6,12 +6,32 @@ namespace Domain\AuthContext\Adapters\Secondary\Gateways;
 
 use Domain\AuthContext\BusinessLogic\Entities\User;
 use Domain\AuthContext\BusinessLogic\Gateways\AuthenticationGateway;
+use Symfony\Component\HttpFoundation\Request;
 
 final class SymfonyAuthenticationGateway implements AuthenticationGateway
 {
 
-    public function authenticate(string $username, string $password): ?User
+    private string $username;
+    private string $password;
+
+    public function authenticateFromCredentials(string $username, string $password): ?User
     {
-        return null;
+        $this->username = $username;
+        $this->password = $password;
     }
+
+    public function getUsername(): string
+    {
+        return $this->username;
+    }
+
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+
+
+
+
 }

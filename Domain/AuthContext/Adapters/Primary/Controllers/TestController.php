@@ -21,6 +21,22 @@ final class TestController extends AbstractController
         return $this->render('index.html.twig');
     }
 
+    #[Route('/demo/slide', name: 'app_demo')]
+    public function slidepanel(): Response
+    {
+        //$this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
+        return $this->render('demo/demo_slidepanel.html.twig');
+    }
+
+    #[Route('/demo/modal', name: 'app_demo_modal')]
+    public function modal(): Response
+    {
+        //$this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
+        return $this->render('demo/demo_page.html.twig');
+    }
+
 //    #[Route('/login')]
 //    final  public function login(): Response
 //    {

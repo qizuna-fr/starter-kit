@@ -4,7 +4,10 @@
 
 {% block body %}
 
-<div class="relative -mt-32 mx-auto max-w-7xl  container mx-auto px-6 md:px-8">
+
+<div class="relative mt-8 mx-auto max-w-7xl  container px-6 md:px-8"
+        {% if block("stimulus_controllers") %} {% block stimulus_controllers %}{% endblock %} {% endif %}
+>
 
     <div class="flex flex-col rounded-2xl bg-white shadow-xl">
         <div class="relative flex-1 px-6 pt-16 pb-8 md:px-8 mt-4">
@@ -40,8 +43,6 @@
             <p class="mt-2 text-base text-gray-400">{% block subtitle %}{% endblock %}</p>
             {% endif %}
 
-
-
         </div>
 
 
@@ -49,6 +50,8 @@
             {% block page_content %}{% endblock %}
 
         </div>
+
+
 
     </div>
 

@@ -21,7 +21,7 @@ final class FakeAuthenticationGateway implements AuthenticationGateway
     }
 
 
-    public function authenticate(string $username, string $password): ?User
+    public function authenticateFromCredentials(string $username, string $password): ?User
     {
         $users =  array_values(
             array_filter(
