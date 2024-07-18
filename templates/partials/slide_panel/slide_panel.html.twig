@@ -20,8 +20,8 @@
     <div class=" fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity"
             {{ stimulus_target('slidepanel' , 'blur') }}
          data-transition-enter="transform transition ease-in-out duration-200 sm:duration-100"
-         data-transition-enter-start="translate-x-0"
-         data-transition-enter-end="translate-x-full"
+         data-transition-enter-start="translate-x-full"
+         data-transition-enter-end="translate-x-0"
          data-transition-leave="transform transition ease-in-out duration-200 sm:duration-400"
          data-transition-leave-start="translate-x-0"
          data-transition-leave-end="translate-x-full"
@@ -36,16 +36,22 @@
          data-transition-leave-end="translate-x-full"
     >
         <div class="absolute inset-0 overflow-hidden">
-            <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+            <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10"
+                 data-transition-enter="transform transition ease-in-out duration-500 sm:duration-700"
+                 data-transition-enter-start="translate-x-full"
+                 data-transition-enter-end="translate-x-0"
+                 data-transition-leave="transform transition ease-in-out duration-500 sm:duration-700"
+                 data-transition-leave-start="translate-x-0"
+                 data-transition-leave-end="translate-x-full">
                 <!--
                   Slide-over panel, show/hide based on slide-over state.
 
-                  Entering: "transform transition ease-in-out duration-500 sm:duration-700"
-                    From: "translate-x-full"
-                    To: "translate-x-0"
-                  Leaving: "transform transition ease-in-out duration-500 sm:duration-700"
-                    From: "translate-x-0"
-                    To: "translate-x-full"
+                  Entering:
+                    From:
+                    To:
+                  Leaving:
+                    From:
+                    To:
                 -->
                 <div class="pointer-events-auto relative w-screen max-w-2xl ">
                     <!--
