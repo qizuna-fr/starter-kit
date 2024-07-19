@@ -27,7 +27,6 @@ yarn-error.log
 /.php-cs-fixer.cache
 /phpcs.xml
 ###< squizlabs/php_codesniffer ###
-/migrations/
 /.phpunit.cache/code-coverage/2f3aba8ef2082911bfde47f2735c6b04
 /.phpunit.cache/code-coverage/3c3d94b3e422c7b988f84e21febee108
 /.phpunit.cache/code-coverage/7af82350657d7887efe72870d2f91e7b
