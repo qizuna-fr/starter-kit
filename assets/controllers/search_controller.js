@@ -13,6 +13,8 @@ export default class extends Controller {
     ]
 
     connect() {
+        this.handleKeydown = this.handleKeydown.bind(this);
+
         useTransition(this,{
             element: this.containerTarget,
             enterActive: 'ease-in duration-100',
@@ -67,6 +69,7 @@ export default class extends Controller {
     }
 
     close(){
+        document.removeEventListener('keydown', this.handleKeydown);
         this.paletteInputTarget.value = '';
         this.showInitial()
         this.leave()
@@ -75,6 +78,7 @@ export default class extends Controller {
     open() {
         this.enter()
         this.paletteInputTarget.focus()
+        document.addEventListener('keydown', this.handleKeydown);
     }
 
     toggle() {
@@ -97,6 +101,12 @@ export default class extends Controller {
         this.initialTarget.classList.remove('hidden')
         this.emptyTarget.classList.add('hidden')
         this.choiceTarget.classList.add('hidden')
+    }
+
+    handleKeydown(event) {
+        if (event.key === 'Escape') {
+            this.close({ params: {} });
+        }
     }
 
 }
