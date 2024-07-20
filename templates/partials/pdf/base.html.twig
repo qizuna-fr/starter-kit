@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;900&display=swap');
+        @media print{
+            @page{
+                size: A4;
+                margin: 1cm 0 5cm 0 ;
+            }
+
+            @page:first {
+                margin: 0 0 5cm 0 ;
+            }
+
+            html {
+                font-family: "Roboto", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+                font-size:10pt;
+                line-height: 0.9;
+            }
+
+            body{
+                background-color:transparent;
+                {#background-image: url('data:image/jpeg;base64,{{ background }}');#}
+                background-repeat: no-repeat;
+                background-size: contain;
+            }
+
+            .title{
+                text-align: center;
+                border-bottom: 1px solid #eee;
+                padding: 1cm 0;
+                font-size : 18pt;
+            }
+
+            .text-left{
+                text-align: left;
+            }
+
+            .text-right{
+                text-align: right;
+            }
+
+            .bold{
+                font-weight: bold;
+            }
+
+            .underline{
+                text-decoration: underline;
+            }
+
+            .row{
+                padding: 0;
+            }
+
+            .reciever{
+                margin: 3cm 1cm 1cm 60%;
+                line-height: 1.2;
+
+            }
+
+            .date_and_city {
+                margin: 1cm 1cm 1cm 60%;
+            }
+
+            .signature {
+                margin: 1cm 1cm 1cm 60%;
+            }
+
+            .references, .description, .greeting, .bpu, .conditions{
+                padding: 0 1cm;
+                line-height: 1.2;
+            }
+
+            .bpu{
+                page-break-before: always;
+            }
+
+            .bpu table{
+                padding: 1cm;
+                width: 100%;
+                border-collapse: collapse;
+                font-size : 9pt;
+            }
+
+            .bpu table tr{
+                border-bottom: 1px solid #eee;
+                height: 1.2cm;
+            }
+
+            .bpu table tr:last-child{
+                border-bottom: 0;
+                height: 1.2cm;
+            }
+
+            .bpu table tr th{
+                font-size : 8pt;
+                color : rgb(99,158,204);
+            }
+
+            .bpu table tr td{
+                padding: 0 0.5cm;
+            }
+
+            .bpu table tr.subtitle{
+                margin: 0 ;
+                background-color: #eee;
+                font-weight: bold;
+            }
+
+            .conditions{
+                font-size : 9pt;
+                margin-top: .5cm;
+                display:grid;
+                grid-template-columns: 1fr 1fr;
+                grid-gap: .5cm;
+            }
+
+            .conditions div{
+                display:flex;
+                flex-direction: column;
+            }
+
+            .conditions div span.conditions__title{
+                font-weight: bold;
+                margin-bottom: .1cm;
+             }
+
+
+        }
+
+    </style>
+</head>
+
+{#    <body style="background-image: url('data:image/jpeg;base64,{{ background }}')"> #}
+
+
+
+
+    <div class="content">
+        {% block body %}{% endblock %}
+    </div>
+
+
+
+{#    </body> #}
+</html>
+
+

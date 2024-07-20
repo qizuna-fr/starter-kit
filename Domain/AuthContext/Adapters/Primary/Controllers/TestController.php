@@ -4,15 +4,39 @@ declare(strict_types=1);
 
 namespace Domain\AuthContext\Adapters\Primary\Controllers;
 
+use App\Domain\EstimateContext\Adapters\Secondary\ViewModel\EstimateViewModel;
+use App\Domain\EstimateContext\BusinessLogic\Models\Estimate;
+use Domain\PdfContext\Adapters\PdfGeneratorGateway;
+use Psr\Http\Message\StreamInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Asset\Package;
+use Symfony\Component\Asset\VersionStrategy\JsonManifestVersionStrategy;
+use Symfony\Component\Filesystem\Path;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Routing\Annotation\Route;
 
+use function array_filter;
+use function array_map;
+use function base64_encode;
+use function count;
+use function file_get_contents;
+use function is_array;
+use function json_decode;
+
 final class TestController extends AbstractController
 {
+
+
+    public function __construct(
+        private PdfGeneratorGateway $pdfGenerator
+    )
+    {
+    }
+
     #[Route('/', name: 'app_index')]
     public function index(): Response
     {
@@ -36,6 +60,40 @@ final class TestController extends AbstractController
 
         return $this->render('demo/demo_page.html.twig');
     }
+    #[Route('/demo/pdf', name: 'app_demo_pdf')]
+    public function printPdf(Request $request): Response
+    {
+
+//        $package = new Package(
+//            new JsonManifestVersionStrategy(
+//                Path::join($this->getParameter('kernel.project_dir'), "public/build/manifest.json")
+//            )
+//        );
+
+//        $background = base64_encode(
+//            file_get_contents(
+//                Path::join(
+//                    $this->getParameter('kernel.project_dir'),
+//                    "public",
+//                    $package->getVersion('build/images/brand.jpg')
+//                )
+//            )
+//        );
+
+        $content = $this->renderView('demo/pdf/example.html.twig', []);
+        $streamContent = $this->pdfGenerator->generatePdf($content, '');
+        $headers = [
+            'Content-Type' => 'application/pdf',
+        ];
+
+        if($request->get('download') === '1'){
+           $headers['Content-Disposition']  = 'attachment; filename="example.pdf"';
+        }
+
+        return new Response((string)$streamContent, Response::HTTP_OK, $headers);
+    }
+
+
 
 //    #[Route('/login')]
 //    final  public function login(): Response
