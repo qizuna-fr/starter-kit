@@ -41,6 +41,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
 
 
+    #[ORM\ManyToOne(targetEntity: Tenant::class, inversedBy: "users")]
+    #[ORM\JoinColumn(nullable: true)]
+    private $tenant;
+
     // @codeCoverageIgnoreStart
     public function __construct()
     {
@@ -156,6 +160,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return $this->activatedAt !== null || $this->activatedAt > (new DateTimeImmutable());
     }
+
+    /**
+     * @return mixed
+     */
+    public function getTenant()
+    {
+        return $this->tenant;
+    }
+
+    /**
+     * @param mixed $tenant
+     */
+    public function setTenant($tenant): static
+    {
+        $this->tenant = $tenant;
+        return $this;
+    }
+
+
+
 
     // @codeCoverageIgnoreEnd
 }

@@ -6,10 +6,11 @@ namespace Infrastructure\DataFixtures;
 
 use DateTimeImmutable;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-final class User extends Fixture
+final class User extends Fixture implements DependentFixtureInterface
 {
     public function __construct(private UserPasswordHasherInterface $userPasswordHasher)
     {
@@ -31,11 +32,19 @@ final class User extends Fixture
         $user->setEmail("{$username}@email.fr");
         $user->setRoles($roles);
         $user->setCreatedAt(new DateTimeImmutable());
+        $user->setTenant($this->getReference('tenant-1'));
 
         if ($isActive) {
             $user->setActivatedAt(new DateTimeImmutable('2000-01-01'));
         }
 
         return $user;
+    }
+
+    public function getDependencies()
+    {
+        return [
+            Tenant::class,
+        ];
     }
 }
