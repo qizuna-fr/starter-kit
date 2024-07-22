@@ -157,6 +157,15 @@ final class TestController extends AbstractController
         ]);
     }
 
+    #[Route('/demo/react', name: 'app_demo_react')]
+    public function react(){
+
+        return $this->render('demo/demo_react.html.twig' , [
+            'data' => "Hello World !"
+        ]);
+
+    }
+
 
 
 //    #[Route('/login')]
