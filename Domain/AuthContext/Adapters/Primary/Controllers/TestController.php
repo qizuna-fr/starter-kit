@@ -7,6 +7,8 @@ namespace Domain\AuthContext\Adapters\Primary\Controllers;
 use Aws\S3\S3ClientInterface;
 use Domain\PdfContext\Adapters\PdfGeneratorGateway;
 use Infrastructure\Service\S3\S3Service;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,7 +17,7 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Routing\Annotation\Route;
 
-use function array_map;
+use function array_rand;
 
 final class TestController extends AbstractController
 {
@@ -52,6 +54,7 @@ final class TestController extends AbstractController
 
         return $this->render('demo/demo_page.html.twig');
     }
+
     #[Route('/demo/pdf', name: 'app_demo_pdf')]
     public function printPdf(Request $request): Response
     {
@@ -87,15 +90,39 @@ final class TestController extends AbstractController
     #[Route('/demo/s3', name: 'app_demo_s3')]
     public function s3()
     {
-
         $s3Service = new S3Service($this->s3Client, $this->bucket);
 
-        //dd($s3Service->generateDownloadUrls());
-
         return $this->render('demo/demo_s3.html.twig', [
-            'files' => $s3Service->generateDownloadUrls()
+            'files' => $s3Service->generateDownloadUrls(),
         ]);
+    }
 
+    #[Route('/demo/excel', name: 'app_demo_excel')]
+    public function excel()
+    {
+        $spreadsheet = new Spreadsheet();
+        $writer = new Xlsx($spreadsheet);
+
+        $columns = ["A", "B", "C", "D", "E"];
+        $lines = [1, 2, 3, 4, 5];
+
+        for ($i = 0; $i < 10; $i++) {
+            $cell = $columns[array_rand($columns)] . $lines[array_rand($lines)];
+            $spreadsheet->getActiveSheet()->setCellValue($cell, 'Cellule' . $cell);
+        }
+
+        // Capturer le contenu du fichier Excel en mémoire
+        $outputStream = fopen('php://temp', 'r+');
+        $writer->save($outputStream);
+
+        rewind($outputStream);
+        $excelContent = stream_get_contents($outputStream);
+        fclose($outputStream);
+
+        return new Response($excelContent, Response::HTTP_OK, [
+            'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            'Content-Disposition' => 'attachment; filename="export_excel.xlsx"',
+        ]);
     }
 
 
