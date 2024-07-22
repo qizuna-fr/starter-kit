@@ -106,12 +106,6 @@
                             </svg>
                         </div>
                         <h3 class="text-2xl font-medium text-gray-600 tracking-tighter"  >Liste filtrées</h3>
-                        <span class="inline-flex items-center gap-x-1.5 rounded-full bg-yellow-100 px-1.5 py-0.5 text-xs font-medium text-yellow-800">
-                          <svg class="h-1.5 w-1.5 fill-yellow-500" viewBox="0 0 6 6" aria-hidden="true">
-                            <circle cx="3" cy="3" r="3" />
-                          </svg>
-                          A finaliser
-                        </span>
                         <p class="mt-4 text-base text-gray-500">Permettre d'afficher un tableau, avec une possibilité de filtrer via une recherche texte</p>
                     </div>
                     <div class="rounded-bl-2xl rounded-br-2xl bg-gray-50 p-6 md:px-8 flex flex-col">
@@ -120,7 +114,6 @@
                         <a href="/demo/filter/cards"  {{ stimulus_action('slidepanel' , 'open') }} class="text-base font-medium text-brandThird-300 hover:text-brandSecondary-300">Voir une liste de cartes filtrable<span aria-hidden="true"> &rarr;</span></a>
                     </div>
                 </div>
-
 
                 <div class="flex flex-col rounded-2xl bg-white shadow-xl">
                     <div class="relative flex-1 px-6 pt-16 pb-8 md:px-8">
@@ -154,18 +147,12 @@
                             </svg>
                         </div>
                         <h3 class="text-2xl font-medium text-gray-600 tracking-tighter">Graphiques</h3>
-                        <span class="inline-flex items-center gap-x-1.5 rounded-full bg-yellow-100 px-1.5 py-0.5 text-xs font-medium text-yellow-800">
-                          <svg class="h-1.5 w-1.5 fill-yellow-500" viewBox="0 0 6 6" aria-hidden="true">
-                            <circle cx="3" cy="3" r="3" />
-                          </svg>
-                          A finaliser
-                        </span>
-                        <p class="mt-4 text-base text-gray-500">Avec chart.js et Symfony UX.</p>
+                        <p class="mt-4 text-base text-gray-500">Avec charts.js et Symfony UX.</p>
 
 
                     </div>
                     <div class="rounded-bl-2xl rounded-br-2xl bg-gray-50 p-6 md:px-8 flex flex-col">
-                        <a href="/demo/s3" {{ stimulus_action('modal', 'open' ) }}
+                        <a href="/demo/charts" {{ stimulus_action('slidepanel', 'open' ) }}
                            class="text-base font-medium text-brandThird-300 hover:text-brandSecondary-300">Voir un graphique exemple<span aria-hidden="true"> &rarr;</span></a>
                     </div>
 

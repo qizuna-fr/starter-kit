@@ -16,6 +16,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
+use Symfony\UX\Chartjs\Model\Chart;
 
 use function array_rand;
 
@@ -137,10 +139,22 @@ final class TestController extends AbstractController
     #[Route('/demo/filter/cards', name: 'app_demo_filtered_cards')]
     public function filteredCards(): Response
     {
-
         //return new Response(null,200);
         //uses Symfony Live Components
         return $this->render('demo/demo_filtered_cards.html.twig');
+    }
+
+    #[Route('/demo/charts', name: 'app_demo_filtered_charts')]
+    public function charts(ChartBuilderInterface $chartBuilder)
+    {
+        $chartLine = $this->buildLineGraph($chartBuilder);
+        $chartCircle = $this->buildPieGraph($chartBuilder);
+
+        return $this->render('demo/demo_chartjs.html.twig', [
+            //'package' => $package,
+            'chart' => $chartLine,
+            'chartCircle' => $chartCircle,
+        ]);
     }
 
 
@@ -176,5 +190,60 @@ final class TestController extends AbstractController
         $mailer->send($email);
 
         return new Response(null, 201);
+    }
+
+    private function buildLineGraph(ChartBuilderInterface $chartBuilder): Chart
+    {
+        $chartLine = $chartBuilder->createChart(Chart::TYPE_LINE);
+        $chartLine->setData(
+            [
+                'labels' => ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                'datasets' => [
+                    [
+                        'label' => 'Cookies mangés 🍪',
+                        'backgroundColor' => 'rgb(50,164,154)',
+                        'borderColor' => 'RGB(30 104 97)',
+                        'data' => [2, 10, 5, 18, 20, 30, 45],
+                        'tension' => 0.4,
+                    ],
+                    [
+                        'label' => 'Km parcourus 🏃‍♀️',
+                        'backgroundColor' => 'rgb(231,64,17)',
+                        'borderColor' => 'RGB(168 48 14)',
+                        'data' => [10, 15, 4, 3, 25, 41, 25],
+                        'tension' => 0.4,
+                    ],
+                ],
+            ]
+        );
+        $chartLine->setOptions(
+            [
+                'maintainAspectRatio' => false,
+            ]
+        );
+        return $chartLine;
+    }
+
+    private function buildPieGraph(ChartBuilderInterface $chartBuilder): Chart
+    {
+        $chartCircle = $chartBuilder->createChart(Chart::TYPE_PIE);
+
+        $chartCircle->setData(
+            [
+                'labels' => ['Red', 'Blue', 'Yellow'],
+                'datasets' => [
+                    [
+                        'label' => 'My First Dataset',
+                        'data' => [300, 50, 100],
+                        'backgroundColor' => [
+                            'rgb(50,164,154)',
+                            'rgb(231,64,17)',
+                            'rgb(32,42,55)',
+                        ],
+                    ],
+                ],
+            ]
+        );
+        return $chartCircle;
     }
 }

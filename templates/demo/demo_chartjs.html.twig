@@ -1,0 +1,26 @@
+<div class="p-4">
+    {% block body %}
+        <div class="flex flex-col w-full justify-center items-center max-auto">
+
+            <div class="">
+                <h3 class="text-brandSecondary-500 text-3xl mb-12 mx-auto">
+                    Graphique de démonstration 1
+                </h3>
+
+                <div style="height: 300px;">
+                    {{ render_chart(chart) }}
+                </div>
+            </div>
+
+            <div class="mt-24">
+                <h3 class="text-brandSecondary-500 text-3xl mb-12 mx-auto">
+                    Graphique de démonstration 2
+                </h3>
+
+                <div>
+                    {{ render_chart(chartCircle) }}
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+</div>
