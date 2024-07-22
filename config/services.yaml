@@ -16,6 +16,7 @@ services:
             # pass this value to any $projectDir argument for any service
             # that's created in this file (including controller arguments)
             string $projectDir: '%kernel.project_dir%'
+            $bucket: '%env(resolve:S3_BUCKET)%'
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
@@ -34,9 +35,30 @@ services:
 #        arguments:
 #            $manager: "@doctrine.orm.entity_manager"
 
+    Aws\S3\S3Client:
+        arguments:
+            - version: 'latest'
+              region: '%env(resolve:S3_REGION)%'
+              endpoint: '%env(resolve:S3_URL)%'
+              use_path_style_endpoint: true
+              credentials:
+                  key: '%env(resolve:S3_KEY)%'
+                  secret: '%env(resolve:S3_SECRET)%'
+
     Domain\PdfContext\RealPdfProvider:
         arguments:
             $gotenbergUrl: '%gotenbergUrl%'
+
+    Aws\S3\S3ClientInterface:
+        alias: Aws\S3\S3Client
+
+    ## Meilisearch Client
+    Meilisearch\Client:
+        factory: [ 'Infrastructure\Factories\MeilisearchFactory' , 'createMeilisearchClient' ]
+        arguments:
+            $url: '%env(MEILI_URL)%'
+            $masterKey: '%env(MEILI_MASTER_KEY)%'
+            $stopWords: '%env(MEILI_STOPWORDS)%'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

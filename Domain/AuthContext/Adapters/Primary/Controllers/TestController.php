@@ -4,37 +4,29 @@ declare(strict_types=1);
 
 namespace Domain\AuthContext\Adapters\Primary\Controllers;
 
-use App\Domain\EstimateContext\Adapters\Secondary\ViewModel\EstimateViewModel;
-use App\Domain\EstimateContext\BusinessLogic\Models\Estimate;
+use Aws\S3\S3ClientInterface;
 use Domain\PdfContext\Adapters\PdfGeneratorGateway;
-use Psr\Http\Message\StreamInterface;
+use Infrastructure\Service\S3\S3Service;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Asset\Package;
-use Symfony\Component\Asset\VersionStrategy\JsonManifestVersionStrategy;
-use Symfony\Component\Filesystem\Path;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Routing\Annotation\Route;
 
-use function array_filter;
 use function array_map;
-use function base64_encode;
-use function count;
-use function file_get_contents;
-use function is_array;
-use function json_decode;
 
 final class TestController extends AbstractController
 {
 
 
     public function __construct(
-        private PdfGeneratorGateway $pdfGenerator
-    )
-    {
+        private PdfGeneratorGateway $pdfGenerator,
+        private readonly S3ClientInterface $s3Client,
+        private S3Service $s3Service,
+        private $bucket
+    ) {
     }
 
     #[Route('/', name: 'app_index')]
@@ -69,7 +61,6 @@ final class TestController extends AbstractController
 //                Path::join($this->getParameter('kernel.project_dir'), "public/build/manifest.json")
 //            )
 //        );
-
 //        $background = base64_encode(
 //            file_get_contents(
 //                Path::join(
@@ -86,11 +77,25 @@ final class TestController extends AbstractController
             'Content-Type' => 'application/pdf',
         ];
 
-        if($request->get('download') === '1'){
-           $headers['Content-Disposition']  = 'attachment; filename="example.pdf"';
+        if ($request->get('download') === '1') {
+            $headers['Content-Disposition'] = 'attachment; filename="example.pdf"';
         }
 
         return new Response((string)$streamContent, Response::HTTP_OK, $headers);
+    }
+
+    #[Route('/demo/s3', name: 'app_demo_s3')]
+    public function s3()
+    {
+
+        $s3Service = new S3Service($this->s3Client, $this->bucket);
+
+        //dd($s3Service->generateDownloadUrls());
+
+        return $this->render('demo/demo_s3.html.twig', [
+            'files' => $s3Service->generateDownloadUrls()
+        ]);
+
     }
 
 
