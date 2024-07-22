@@ -1,0 +1,32 @@
+<div class="px-4 sm:px-6 lg:px-8" {{ attributes }}>
+
+
+
+    <div class="sm:flex sm:items-center">
+        <div class="sm:flex-auto">
+            <h1 class="text-base font-semibold leading-6 text-gray-900">Villes</h1>
+            <p class="mt-2 text-sm text-gray-700">Voici une liste de villes à proximité des bureaux de Qizuna.</p>
+        </div>
+    </div>
+    <div class="mt-8 flow-root">
+
+        <input
+                type="text"
+                data-model="query"
+                placeholder="Tapez pour rechercher..."
+                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        >
+
+        <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                <table class="min-w-full divide-y divide-gray-300">
+                    <tbody class="divide-y divide-gray-200 bg-white">
+                    {% for city in this.getCities() %}
+                        <tr><td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-0">{{ city.label }}</td></tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+         </div>
+    </div>
+</div>

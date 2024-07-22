@@ -125,6 +125,24 @@ final class TestController extends AbstractController
         ]);
     }
 
+    #[Route('/demo/filter/list', name: 'app_demo_filtered_list')]
+    public function filteredList(): Response
+    {
+
+        //return new Response(null,200);
+        //uses Symfony Live Components
+        return $this->render('demo/demo_filtered_table.html.twig');
+    }
+
+    #[Route('/demo/filter/cards', name: 'app_demo_filtered_cards')]
+    public function filteredCards(): Response
+    {
+
+        //return new Response(null,200);
+        //uses Symfony Live Components
+        return $this->render('demo/demo_filtered_cards.html.twig');
+    }
+
 
 
 //    #[Route('/login')]
