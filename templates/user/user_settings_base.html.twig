@@ -1,0 +1,166 @@
+{% extends 'application_layout.html.twig' %}
+
+{% block stimulus_controllers %}
+    {{ stimulus_controller('modal slidepanel dropdown') }}
+{% endblock %}
+
+
+{% block body %}
+
+    <div>
+        <!-- Header -->
+        <div class="relative bg-brandThird-300 pb-32 ">
+            <div class="absolute inset-0">
+                <img class="h-full w-full object-cover"
+                     src="https://images.unsplash.com/photo-1525130413817-d45c1d127c42?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=60&&sat=-100"
+                     alt="">
+                <div class="absolute inset-0 bg-brandThird-400 mix-blend-multiply" aria-hidden="true"></div>
+            </div>
+            <div class="relative mx-auto max-w-7xl py-24 px-6 sm:py-32 lg:px-8">
+                <h1 class="text-4xl font-extralight tracking-tight text-white md:text-5xl lg:text-6xl">
+                    Bienvenue {{ app.user.firstName }}!</h1>
+                <p class="mt-6 max-w-3xl text-xl text-gray-300">Gérer les informations de votre compte</p>
+            </div>
+        </div>
+
+        {#    {%  if not isTwoFactorRegistered and isTwoFactorEnabled %} #}
+        {#        <section class="relative z-auto mx-auto -mt-32 max-w-7xl px-6 pb-32 lg:px-8" aria-labelledby="contact-heading"> #}
+        {#            <div class="grid grid-cols-1 gap-y-20 lg:grid-cols-1 lg:gap-y-0 lg:gap-x-8"> #}
+        {#                <div class="flex flex-col rounded-2xl bg-white shadow-xl"> #}
+        {#                    <div class="relative flex-1 px-6 pt-16 pb-8 md:px-8"> #}
+        {#                        <div class="absolute top-0 inline-block -translate-y-1/2 transform rounded-xl bg-brandPrincipal-500 p-5 shadow-lg"> #}
+        {#                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 text-white"> #}
+        {#                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m0-10.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.25-8.25-3.286Zm0 13.036h.008v.008H12v-.008Z" /> #}
+        {#                            </svg> #}
+        {#                        </div> #}
+        {#                        <h3 class="text-2xl font-medium text-brandPrincipal-800 tracking-tighter"  >Sécurisez votre compte</h3> #}
+        {#                        <p class="mt-4 text-base text-brandPrincipal-500">Votre compte n'est pas sécurisé. <br>Vous pouvez dès maintenant augmenter sa sécurité en optant pour une authentification à deux facteurs.</p> #}
+        {#                    </div> #}
+        {#                    <div class="rounded-bl-2xl rounded-br-2xl bg-gray-50 p-6 md:px-8"> #}
+        {#                        <a href="#" class="text-base font-medium text-brandPrincipal-300 hover:text-brandPrincipal-500">Corriger le problème<span aria-hidden="true"> &rarr;</span></a> #}
+        {#                    </div> #}
+        {#                </div> #}
+
+        {#            </div> #}
+        {#        </section> #}
+        {#    {% endif %} #}
+
+{#        <section class="relative z-auto mx-auto -mt-32 max-w-7xl px-6 pb-32 lg:px-8" aria-labelledby="contact-heading">#}
+{#            <div class="grid grid-cols-1 gap-y-20 lg:grid-cols-1 lg:gap-y-0 lg:gap-x-8">#}
+{#                <div class="flex flex-col rounded-2xl bg-white shadow-xl">#}
+{#                    <div class="relative flex-1 px-6 pt-16 pb-8 md:px-8">#}
+{#                        <div class="absolute top-0 inline-block -translate-y-1/2 transform rounded-xl bg-brandPrincipal-500 p-5 shadow-lg">#}
+{#                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"#}
+{#                                 stroke="currentColor" class="h-6 w-6 text-white">#}
+{#                                <path stroke-linecap="round" stroke-linejoin="round"#}
+{#                                      d="M12 9v3.75m0-10.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.25-8.25-3.286Zm0 13.036h.008v.008H12v-.008Z"/>#}
+{#                            </svg>#}
+{#                        </div>#}
+{#                        <h3 class="text-2xl font-medium text-brandPrincipal-800 tracking-tighter">Sécurisez votre#}
+{#                            compte</h3>#}
+{#                        <p class="mt-4 text-base text-brandPrincipal-500">Votre compte n'est pas sécurisé. <br>Vous#}
+{#                            pouvez dès maintenant augmenter sa sécurité en optant pour une authentification à deux#}
+{#                            facteurs.</p>#}
+{#                    </div>#}
+{#                    <div class="rounded-bl-2xl rounded-br-2xl bg-gray-50 p-6 md:px-8">#}
+{#                        <a href="#" class="text-base font-medium text-brandPrincipal-300 hover:text-brandPrincipal-500">Corriger#}
+{#                            le problème<span aria-hidden="true"> &rarr;</span></a>#}
+{#                    </div>#}
+{#                </div>#}
+
+{#            </div>#}
+{#        </section>#}
+
+        <section class="relative z-auto mx-auto  max-w-7xl px-6 pb-32 lg:px-8 grid grid-cols-8 gap-4  -mt-16"
+                 aria-labelledby="contact-heading">
+
+            <div class="overflow-hidden rounded-xl bg-white shadow-xl col-span-2 " {{ stimulus_controller('passwordstrength') }}>
+                <div class="px-4 py-5 sm:p-6">
+                    <nav class="flex flex-1 flex-col" aria-label="Sidebar">
+
+                        <p class=""></p>
+
+                        <ul role="list" class="flex flex-1 flex-col gap-y-7">
+                            <li>
+                                <ul role="list" class="-mx-2 space-y-1">
+{#                                    <li>#}
+{#                                        <!-- Current: "bg-gray-50 text-indigo-600", Default: "text-gray-700 hover:text-indigo-600 hover:bg-gray-50" -->#}
+{#                                        <a href="#" class="group flex gap-x-3 rounded-md bg-gray-50 p-2 text-base leading-6 text-indigo-600">#}
+{#                                            <svg class="h-6 w-6 shrink-0 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">#}
+{#                                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />#}
+{#                                            </svg>#}
+{#                                            Dashboard#}
+
+{#                                        </a>#}
+{#                                    </li>#}
+                                    <li>
+                                        <!-- Current: "bg-gray-100 text-indigo-600", Default: "text-gray-700 hover:text-indigo-600 hover:bg-gray-100" -->
+                                        <a href="{{ path('app_user_settings') }}"
+                                           class="group flex gap-x-3 rounded-md  p-2 text-base  leading-6 text-brandThird-500">
+                                            <svg class="h-6 w-6 shrink-0 text-brandThird-400 group-hover:text-brandThird-400" fill="none"
+                                                 viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                 aria-hidden="true">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                      d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/>
+                                            </svg>
+                                            Mes informations
+{#                                            <span class="ml-auto w-9 min-w-max whitespace-nowrap rounded-full bg-gray-50 px-2.5 py-0.5 text-center text-xs font-medium leading-5 text-gray-600 ring-1 ring-inset ring-gray-200"#}
+{#                                                  aria-hidden="true">5</span>#}
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{{ path('app_user_settings_password') }}"
+                                           class="group flex gap-x-3 rounded-md  p-2 text-base  leading-6 text-brandThird-500">
+                                            <svg class="h-6 w-6 shrink-0 text-gray-400 group-hover:text-brandThird-400"
+                                                 fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                                 stroke="currentColor" aria-hidden="true">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                      d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/>
+                                            </svg>
+                                            Mot de passe
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{{ path('app_user_2fa') }}"
+                                           class="group flex gap-x-3 rounded-md  p-2 text-base  leading-6 text-brandThird-500 group-hover:text-brandThird-400">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 shrink-0 text-gray-400 group-hover:text-brandThird-400">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+                                            </svg>
+                                            2FA
+                                        </a>
+                                    </li>
+
+
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 gap-y-20 lg:grid-cols-1 lg:gap-y-0 lg:gap-x-8 col-span-6">
+
+                <div class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2 p-8">
+
+                    <h3 class="text-brandSecondary-500 text-3xl mb-4">
+                        {% block user_setting_title %}{% endblock %}
+                    </h3>
+
+                    <div class="text-base text-brandThird-100 mb-8 ">
+                        {% block user_setting_description %}{% endblock %}
+                    </div>
+
+                    {% block user_setting_content %}{% endblock %}
+
+                </div>
+
+
+            </div>
+        </section>
+
+
+    </div>
+
+{% endblock %}

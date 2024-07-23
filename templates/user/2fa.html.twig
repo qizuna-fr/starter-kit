@@ -1,0 +1,69 @@
+{% extends 'user/user_settings_base.html.twig' %}
+
+{% block  user_setting_content %}
+
+    {% if result == 'GoogleAuthenticatorTwoFactorProvider' %}
+        {% if  hasGoogleSecret %}
+
+            <div class="flex flex-col items-center">
+                <span>Google Authenticator secret:</span>
+                <pre class="rounded-md bg-gray-300 text-brandThird-800 p-2">{{ app.user.googleAuthenticatorSecret }}</pre>
+
+                <img src="{{ path("qr_code_ga") }}"/>
+                <a href="{{ path('app_user_2fa_disable_google') }}"
+                   class="text-brandThird-100 hover:text-brandPrincipal-500"
+                   onclick="return confirm('Vous allez désactiver l\'authentification sécurisée. Êtes vous sur ? ');"
+                >Désactiver l'authentification sécurisée</a>
+            </div>
+
+        {% else %}
+
+            <a href="{{ path('app_user_2fa_activate_google') }}"
+               class="app_primary_button w-full">Activer l'authentification sécurisée</a>
+
+        {% endif %}
+    {% endif %}
+
+    {% if result == 'TotpAuthenticatorTwoFactorProvider' %}
+        {% if  hasTotpSecret %}
+
+            <div class="flex flex-col items-center">
+                <span>TOTP:</span>
+
+                <img src="{{ path("qr_code_totp") }}"/>
+                <a href="{{ path('app_user_2fa_disable_totp') }}"
+                   class="text-brandThird-100 hover:text-brandPrincipal-500"
+                   onclick="return confirm('Vous allez désactiver l\'authentification sécurisée. Êtes vous sur ? ');"
+                >Désactiver l'authentification sécurisée</a>
+            </div>
+
+        {% else %}
+            <a href="{{ path('app_user_2fa_activate_totp') }}"
+               class="app_primary_button w-full">Activer
+                l'authentification sécurisée</a>
+
+        {% endif %}
+    {% endif %}
+
+
+
+
+{% endblock %}
+
+{% block user_setting_title %}
+    Authentification multi-facteurs (2FA)
+{% endblock %}
+
+{% block user_setting_description %}
+
+    L'authentification multi-facteurs permet d'éviter de se faire pirater son compte en ajoutant une sécurité supplémentaire.
+    <br> <br>
+
+    {% if result == 'EmailTwoFactorProvider' %}
+        La double authentification par email est activée. Vous n'avez rien à faire.
+    {% else %}
+        Pour utiliser l'authentification multi-facteurs, vous devez scanner le QR code ci-dessous avec une application d'authentification de type Google Authenticator, Microsoft Authenticator, ou toute autre application qui vous permet cette sécurité.
+    {% endif %}
+
+
+{% endblock %}

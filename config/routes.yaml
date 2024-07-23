@@ -1,3 +1,7 @@
 AuthContext:
     resource: ../Domain/AuthContext/Adapters/Primary/Controllers/
     type: attribute
+
+UserContext:
+    resource: ../Domain/UserContext/Adapters/Primary/Controllers/
+    type: attribute

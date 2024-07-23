@@ -6,7 +6,16 @@ namespace Domain\AuthContext\Adapters\Primary\Controllers;
 
 use Aws\S3\S3ClientInterface;
 use Domain\PdfContext\Adapters\PdfGeneratorGateway;
+use Endroid\QrCode\Color\Color;
+use Endroid\QrCode\Encoding\Encoding;
+use Endroid\QrCode\ErrorCorrectionLevel;
+use Endroid\QrCode\Label\Label;
+use Endroid\QrCode\Logo\Logo;
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\RoundBlockSizeMode;
+use Endroid\QrCode\Writer\PngWriter;
 use Infrastructure\Service\S3\S3Service;
+use Infrastructure\Service\Security\TwoFactorSecurityConfig;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -29,6 +38,7 @@ final class TestController extends AbstractController
         private PdfGeneratorGateway $pdfGenerator,
         private readonly S3ClientInterface $s3Client,
         private S3Service $s3Service,
+        private TwoFactorSecurityConfig $securityConfig,
         private $bucket
     ) {
     }
@@ -38,7 +48,13 @@ final class TestController extends AbstractController
     {
         //$this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
-        return $this->render('index.html.twig');
+        $user = $this->getUser();
+        $isTwoFactorRegistered = $user->isTotpAuthenticationEnabled() || $user->isGoogleAuthenticatorEnabled() || $user->isEmailAuthEnabled();
+
+        return $this->render('index.html.twig', [
+            'isTwoFactorEnabled' => $this->securityConfig->isTwoFactorEnabled(),
+            'isTwoFactorRegistered' => $isTwoFactorRegistered
+        ]);
     }
 
     #[Route('/demo/slide', name: 'app_demo')]
@@ -162,6 +178,44 @@ final class TestController extends AbstractController
 
         return $this->render('demo/demo_react.html.twig' , [
             'data' => "Hello World !"
+        ]);
+
+    }
+
+    #[Route('/demo/qrcode', name: 'app_demo_qrcode')]
+    public function qrCode(string $projectDir)
+    {
+        $writer = new PngWriter();
+
+// Create QR code
+        $qrCode = QrCode::create('https://www.qizuna.fr')
+            ->setEncoding(new Encoding('UTF-8'))
+            ->setErrorCorrectionLevel(ErrorCorrectionLevel::Low)
+            ->setSize(300)
+            ->setMargin(10)
+            ->setRoundBlockSizeMode(RoundBlockSizeMode::Margin)
+            ->setForegroundColor(new Color(0, 0, 0))
+            ->setBackgroundColor(new Color(255, 255, 255));
+
+        // Create generic logo
+        $logo = Logo::create($projectDir.'/assets/images/brand.png')
+            ->setResizeToWidth(100)
+            ->setPunchoutBackground(true)
+        ;
+        $logo = null;
+
+        // Create generic label
+        $label = Label::create('visitez qizuna.fr')
+            ->setTextColor(new Color(255, 0, 0));
+
+
+        $result = $writer->write($qrCode, $logo, $label);
+
+        // Validate the result
+        //$writer->validateResult($result, 'Life is too short to be generating QR codes');
+
+        return $this->render('demo/demo_qrcode.html.twig', [
+            'qrCode' => $result->getDataUri(),
         ]);
 
     }

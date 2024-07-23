@@ -15,13 +15,35 @@
                 <div class="absolute inset-0 bg-brandThird-400 mix-blend-multiply" aria-hidden="true"></div>
             </div>
             <div class="relative mx-auto max-w-7xl py-24 px-6 sm:py-32 lg:px-8">
-                <h1 class="text-4xl font-extralight tracking-tight text-white md:text-5xl lg:text-6xl">Bienvenue !</h1>
+                <h1 class="text-4xl font-extralight tracking-tight text-white md:text-5xl lg:text-6xl">Bienvenue {{ app.user.firstName }}!</h1>
                 <p class="mt-6 max-w-3xl text-xl text-gray-300">Ca y est ! Votre application semble fonctionner.</p>
             </div>
         </div>
 
         <!-- Overlapping cards -->
+        {%  if not isTwoFactorRegistered and isTwoFactorEnabled %}
         <section class="relative z-auto mx-auto -mt-32 max-w-7xl px-6 pb-32 lg:px-8" aria-labelledby="contact-heading">
+            <div class="grid grid-cols-1 gap-y-20 lg:grid-cols-1 lg:gap-y-0 lg:gap-x-8">
+                <div class="flex flex-col rounded-2xl bg-white shadow-xl">
+                    <div class="relative flex-1 px-6 pt-16 pb-8 md:px-8">
+                        <div class="absolute top-0 inline-block -translate-y-1/2 transform rounded-xl bg-brandPrincipal-500 p-5 shadow-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 text-white">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m0-10.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.25-8.25-3.286Zm0 13.036h.008v.008H12v-.008Z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-medium text-brandPrincipal-800 tracking-tighter"  >Sécurisez votre compte</h3>
+                        <p class="mt-4 text-base text-brandPrincipal-500">Votre compte n'est pas sécurisé. <br>Vous pouvez dès maintenant augmenter sa sécurité en optant pour une authentification à deux facteurs.</p>
+                    </div>
+                    <div class="rounded-bl-2xl rounded-br-2xl bg-gray-50 p-6 md:px-8">
+                        <a href="#" class="text-base font-medium text-brandPrincipal-300 hover:text-brandPrincipal-500">Corriger le problème<span aria-hidden="true"> &rarr;</span></a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        {% endif %}
+
+        <section class="relative z-auto mx-auto  -mt-16 max-w-7xl px-6 pb-32 lg:px-8" aria-labelledby="contact-heading">
             <div class="grid grid-cols-1 gap-y-20 lg:grid-cols-1 lg:gap-y-0 lg:gap-x-8">
                 <div class="flex flex-col rounded-2xl bg-white shadow-xl">
                     <div class="relative flex-1 px-6 pt-16 pb-8 md:px-8">
@@ -186,7 +208,7 @@
             <div class="grid grid-cols-1 gap-y-20 lg:grid-cols-3 lg:gap-y-0 lg:gap-x-8">
                 <div class="flex flex-col rounded-2xl bg-white shadow-xl">
                     <div class="relative flex-1 px-6 pt-16 pb-8 md:px-8">
-                        <div class="absolute top-0 inline-block -translate-y-1/2 transform rounded-xl bg-brandSecondary-600 p-5 shadow-lg">
+                        <div class="absolute top-0 inline-block -translate-y-1/2 transform rounded-xl bg-brandThird-600 p-5 shadow-lg">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0 1 10.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0 .229 2.523a1.125 1.125 0 0 1-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0h1.091A2.25 2.25 0 0 0 21 15.75V9.456c0-1.081-.768-2.015-1.837-2.175a48.055 48.055 0 0 0-1.913-.247M6.34 18H5.25A2.25 2.25 0 0 1 3 15.75V9.456c0-1.081.768-2.015 1.837-2.175a48.041 48.041 0 0 1 1.913-.247m10.5 0a48.536 48.536 0 0 0-10.5 0m10.5 0V3.375c0-.621-.504-1.125-1.125-1.125h-8.25c-.621 0-1.125.504-1.125 1.125v3.659M18 10.5h.008v.008H18V10.5Zm-3 0h.008v.008H15V10.5Z" />
                             </svg>
@@ -204,7 +226,7 @@
                 </div>
                 <div class="flex flex-col rounded-2xl bg-white shadow-xl">
                     <div class="relative flex-1 px-6 pt-16 pb-8 md:px-8">
-                        <div class="absolute top-0 inline-block -translate-y-1/2 transform rounded-xl bg-brandSecondary-600 p-5 shadow-lg">
+                        <div class="absolute top-0 inline-block -translate-y-1/2 transform rounded-xl bg-brandThird-600 p-5 shadow-lg">
                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 text-white">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 9.75v6.75m0 0-3-3m3 3 3-3m-8.25 6a4.5 4.5 0 0 1-1.41-8.775 5.25 5.25 0 0 1 10.233-2.33 3 3 0 0 1 3.758 3.848A3.752 3.752 0 0 1 18 19.5H6.75Z" />
                             </svg>
@@ -220,7 +242,7 @@
                 </div>
                 <div class="flex flex-col rounded-2xl bg-white shadow-xl">
                     <div class="relative flex-1 px-6 pt-16 pb-8 md:px-8">
-                        <div class="absolute top-0 inline-block -translate-y-1/2 transform rounded-xl bg-brandSecondary-600 p-5 shadow-lg">
+                        <div class="absolute top-0 inline-block -translate-y-1/2 transform rounded-xl bg-brandThird-600 p-5 shadow-lg">
 
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 text-white">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25V13.5Zm0 2.25h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25V18Zm2.498-6.75h.007v.008h-.007v-.008Zm0 2.25h.007v.008h-.007V13.5Zm0 2.25h.007v.008h-.007v-.008Zm0 2.25h.007v.008h-.007V18Zm2.504-6.75h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V13.5Zm0 2.25h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V18Zm2.498-6.75h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V13.5ZM8.25 6h7.5v2.25h-7.5V6ZM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 0 0 2.25 2.25h10.5a2.25 2.25 0 0 0 2.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0 0 12 2.25Z" />
@@ -241,7 +263,7 @@
             <div class="grid grid-cols-1 gap-y-20 lg:grid-cols-3 lg:gap-y-0 lg:gap-x-8">
                 <div class="flex flex-col rounded-2xl bg-white shadow-xl">
                     <div class="relative flex-1 px-6 pt-16 pb-8 md:px-8">
-                        <div class="absolute top-0 inline-block -translate-y-1/2 transform rounded-xl bg-brandSecondary-600 p-5 shadow-lg">
+                        <div class="absolute top-0 inline-block -translate-y-1/2 transform rounded-xl bg-brandThird-600 p-5 shadow-lg">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 9v.906a2.25 2.25 0 0 1-1.183 1.981l-6.478 3.488M2.25 9v.906a2.25 2.25 0 0 0 1.183 1.981l6.478 3.488m8.839 2.51-4.66-2.51m0 0-1.023-.55a2.25 2.25 0 0 0-2.134 0l-1.022.55m0 0-4.661 2.51m16.5 1.615a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V8.844a2.25 2.25 0 0 1 1.183-1.981l7.5-4.039a2.25 2.25 0 0 1 2.134 0l7.5 4.039a2.25 2.25 0 0 1 1.183 1.98V19.5Z" />
                             </svg>
@@ -260,9 +282,64 @@
                         <a href="/demo/pdf" {{ stimulus_action('slidepanel' , 'open') }} class="text-base font-medium text-brandThird-300 hover:text-brandSecondary-300">Envoyer un email de test<span aria-hidden="true"> &rarr;</span></a>
                     </div>
                 </div>
+                <div class="flex flex-col rounded-2xl bg-white shadow-xl">
+                    <div class="relative flex-1 px-6 pt-16 pb-8 md:px-8">
+                        <div class="absolute top-0 inline-block -translate-y-1/2 transform rounded-xl bg-brandThird-600 p-5 shadow-lg">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 3.75 9.375v-4.5ZM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 0 1-1.125-1.125v-4.5ZM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 13.5 9.375v-4.5Z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 6.75h.75v.75h-.75v-.75ZM6.75 16.5h.75v.75h-.75v-.75ZM16.5 6.75h.75v.75h-.75v-.75ZM13.5 13.5h.75v.75h-.75v-.75ZM13.5 19.5h.75v.75h-.75v-.75ZM19.5 13.5h.75v.75h-.75v-.75ZM19.5 19.5h.75v.75h-.75v-.75ZM16.5 16.5h.75v.75h-.75v-.75Z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-medium text-gray-600 tracking-tighter">QrCode</h3>
+
+                        <p class="mt-4 text-base text-gray-500"> Génération de QrCodes</p>
+                    </div>
+                    <div class="rounded-bl-2xl rounded-br-2xl bg-gray-50 p-6 md:px-8 flex flex-col">
+{#                        <a href="/demo/slide" {{ stimulus_action('slidepanel' , 'open') }} class="text-base font-medium text-brandThird-300 hover:text-brandSecondary-300">Ouvrir un panneau lateral<span aria-hidden="true"> &rarr;</span></a>#}
+                        <a href="/demo/qrcode" {{ stimulus_action('slidepanel' , 'open') }} class="text-base font-medium text-brandThird-300 hover:text-brandSecondary-300">Afficher un QrCode<span aria-hidden="true"> &rarr;</span></a>
+                    </div>
+                </div>
             </div>
         </section>
 
+        <h1 class="text-3xl max-w-7xl mx-auto mb-32">Autres fonctionnalités</h1>
+        <section class=" -mt-12 relative z-auto mx-auto  max-w-7xl px-6 pb-32 lg:px-8">
+
+            <div class="grid grid-cols-1 gap-y-20 lg:grid-cols-3 lg:gap-y-0 lg:gap-x-8">
+                <div class="flex flex-col rounded-2xl bg-white shadow-xl">
+                    <div class="relative flex-1 px-6 pt-16 pb-8 md:px-8">
+                        <div class="absolute top-0 inline-block -translate-y-1/2 transform rounded-xl bg-brandPrincipal-600 p-5 shadow-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-medium text-gray-600 tracking-tighter"  >Authentification à double facteur</h3>
+                        <p class="mt-4 text-base text-gray-500"> Sécuriser la connexion à l'application avec une authentification à facteurs multiples : TOTP , Google Authenticator, ou Email</p>
+                    </div>
+                    <div class="rounded-bl-2xl rounded-br-2xl bg-gray-50 p-6 md:px-8 flex flex-col">
+                        {#                        <a href="/demo/slide" {{ stimulus_action('slidepanel' , 'open') }} class="text-base font-medium text-brandThird-300 hover:text-brandSecondary-300">Ouvrir un panneau lateral<span aria-hidden="true"> &rarr;</span></a>#}
+{#                        <a href="/demo/pdf" {{ stimulus_action('slidepanel' , 'open') }} class="text-base font-medium text-brandThird-300 hover:text-brandSecondary-300">Envoyer un email de test<span aria-hidden="true"> &rarr;</span></a>#}
+                    </div>
+                </div>
+                <div class="flex flex-col rounded-2xl bg-white shadow-xl">
+                    <div class="relative flex-1 px-6 pt-16 pb-8 md:px-8">
+                        <div class="absolute top-0 inline-block -translate-y-1/2 transform rounded-xl bg-brandPrincipal-600 p-5 shadow-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 7.756a4.5 4.5 0 1 0 0 8.488M7.5 10.5h5.25m-5.25 3h5.25M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                            </svg>
+
+                        </div>
+                        <h3 class="text-2xl font-medium text-gray-600 tracking-tighter">Paiement en ligne</h3>
+                        <p class="mt-4 text-base text-gray-500">Payer l'abonnement à une application en ligne via Stripe. Paiement unique ou par abonnement</p>
+                    </div>
+                    <div class="rounded-bl-2xl rounded-br-2xl bg-gray-50 p-6 md:px-8 flex flex-col">
+                        {#                        <a href="/demo/slide" {{ stimulus_action('slidepanel' , 'open') }} class="text-base font-medium text-brandThird-300 hover:text-brandSecondary-300">Ouvrir un panneau lateral<span aria-hidden="true"> &rarr;</span></a>#}
+                        {#                        <a href="/demo/pdf" {{ stimulus_action('slidepanel' , 'open') }} class="text-base font-medium text-brandThird-300 hover:text-brandSecondary-300">Envoyer un email de test<span aria-hidden="true"> &rarr;</span></a>#}
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <section>
             <div class="bg-white py-24 sm:py-32">

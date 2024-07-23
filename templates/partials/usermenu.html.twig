@@ -39,15 +39,15 @@
 
     >
         <div class="flex flex-col p-4 border-b ">
-            <span class="text-sm text-brandThird-200 font-extralight">Bonjour</span>
-            <span class="text-xl text-brandPrincipal-800 text-bold -mt-2">{{ app.user.username|capitalize }}</span>
+            <span class="text-sm text-brandThird-200 font-extralight">Connecté en tant que:</span>
+            <span class="text-xl text-brandPrincipal-800 text-bold -mt-1">{{ app.user.firstname|capitalize ~ ' ' ~ app.user.lastName|capitalize}}</span>
             {%  if app.user.tenant.name is defined %}
             <span class="text-base text-brandPrincipal-800 text-extralight -mt-2">{{ app.user.tenant.name|capitalize }}</span>
             {% endif %}
         </div>
 
         <!-- Active: "bg-gray-100", Not Active: "" -->
-        <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">
+        <a href="{{ path('app_user_settings') }}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">
             Mes informations
         </a>
 

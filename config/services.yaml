@@ -31,9 +31,7 @@ services:
 
     Infrastructure\:
         resource: '../Infrastructure/'
-#    App\Service\CsvImporter\CsvDeviceListImporter:
-#        arguments:
-#            $manager: "@doctrine.orm.entity_manager"
+
 
     Aws\S3\S3Client:
         arguments:
@@ -52,6 +50,10 @@ services:
     Aws\S3\S3ClientInterface:
         alias: Aws\S3\S3Client
 
+    Infrastructure\Service\Security\TwoFactorSecurityConfig:
+        arguments:
+            $twoFactorProviderRegistry: '@scheb_two_factor.provider_registry'
+
     ## Meilisearch Client
     Meilisearch\Client:
         factory: [ 'Infrastructure\Factories\MeilisearchFactory' , 'createMeilisearchClient' ]
@@ -62,3 +64,4 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+

@@ -10,6 +10,7 @@
         "@symfony/ux-chartjs": "file:vendor/symfony/ux-chartjs/assets",
         "@symfony/ux-live-component": "file:vendor/symfony/ux-live-component/assets",
         "@symfony/ux-react": "file:vendor/symfony/ux-react/assets",
+        "@symfony/ux-toggle-password": "file:vendor/symfony/ux-toggle-password/assets",
         "@symfony/webpack-encore": "^4.0.0",
         "autoprefixer": "^10.4.13",
         "chart.js": "^3.4.1 || ^4.0",
@@ -39,6 +40,7 @@
         "@tailwindcss/forms": "^0.5.3",
         "axios": "^1.7.2",
         "el-transition": "^0.0.7",
-        "stimulus-use": "^0.51.0"
+        "stimulus-use": "^0.51.0",
+        "zxcvbn": "^4.4.2"
     }
 }

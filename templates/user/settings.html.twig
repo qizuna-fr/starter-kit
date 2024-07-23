@@ -1,0 +1,29 @@
+{% extends 'user/user_settings_base.html.twig' %}
+
+{% block user_setting_content %}
+
+
+
+    {{ form_start(userForm) }}
+
+
+
+    {{ form_row(userForm.firstName) }}
+    {{ form_row(userForm.lastName) }}
+    <input type="submit" class=" text-base app_primary_button w-full mt-4" value="Mettre à jour">
+
+    {{ form_end(userForm) }}
+
+
+
+{% endblock %}
+
+{% block user_setting_title %}
+    Mes informations personnelles
+{% endblock %}
+
+{% block user_setting_description %}
+    Ici, vous pouvez mettre à jour vos informations personnelles.
+{% endblock %}
+
+
