@@ -281,7 +281,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TotpTwo
 
     public function isEmailAuthEnabled(): bool
     {
-        return $this->authCode !== null; // This can be a persisted field to switch email code authentication on/off
+        return true; // This can be a persisted field to switch email code authentication on/off
     }
 
     public function getEmailAuthRecipient(): string

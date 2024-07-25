@@ -10,6 +10,13 @@
     <server name="SYMFONY_PHPUNIT_VERSION" value="9.5"/>
     <env name="SYMFONY_DEPRECATIONS_HELPER" value="disabled"/>
 
+        <!-- ###+ openai-php/symfony ### -->
+        <!-- Generate your own API credentials through the OpenAI Platform portal. -->
+        <!-- https://platform.openai.com/account/api-keys -->
+        <env name="OPENAI_API_KEY" value="sk-..."/>
+        <env name="OPENAI_ORGANIZATION" value=""/>
+        <!-- ###- openai-php/symfony ### -->
+
   </php>
   <testsuites>
     <testsuite name="Project Test Suite">

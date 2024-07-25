@@ -16,6 +16,7 @@ use Endroid\QrCode\RoundBlockSizeMode;
 use Endroid\QrCode\Writer\PngWriter;
 use Infrastructure\Service\S3\S3Service;
 use Infrastructure\Service\Security\TwoFactorSecurityConfig;
+use OpenAI;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -39,6 +40,7 @@ final class TestController extends AbstractController
         private readonly S3ClientInterface $s3Client,
         private S3Service $s3Service,
         private TwoFactorSecurityConfig $securityConfig,
+        private OpenAI\Client $openAi,
         private $bucket
     ) {
     }
@@ -217,6 +219,17 @@ final class TestController extends AbstractController
         return $this->render('demo/demo_qrcode.html.twig', [
             'qrCode' => $result->getDataUri(),
         ]);
+    }
+
+    #[Route('/demo/openai_chat', name: 'app_demo_openai')]
+    public function openAi(): Response
+    {
+
+
+
+
+        return $this->render('demo/demo_openai.html.twig' );
+
 
     }
 
@@ -253,6 +266,31 @@ final class TestController extends AbstractController
         $mailer->send($email);
 
         return new Response(null, 201);
+    }
+
+    #[Route('/demo/chat', name: 'app_chat' , methods: ['POST'])]
+    public function askToChatGpt(Request $request){
+
+        $phrase = $request->get('phrase');
+        $query = 'Peux tu traduire en trois langues aléatoires la phrase suivante et uniquement afficher 
+        la traduction sans aucun commentaire. Choisis ces langues parmi celles de l\'union européene. 
+        Renvoie le contenu sous forme de liste HTML.
+        Chaque traduction devra se positionner sur une nouvelle ligne, et devra être précédée de l\emoji , 
+        ainsi que de la langue entre parentheses 
+        correspondant à la langue de la traduction suivante: "'.$phrase.'" ';
+
+        $response = $this->openAi->chat()->create(
+            [
+                'model' => 'gpt-3.5-turbo',
+                'messages' => [
+                    ['role' => 'system', 'content' => 'You are a helpful assistant.'],
+//                    ['role' => 'user', 'content' => 'Peux tu corriger la phrase suivante : "Je croix ke cet frase contiens des ereurres" '],
+                    ['role' => 'user', 'content' => $query],
+                ],
+            ]
+        );
+
+        return new Response($response['choices'][0]['message']['content']);
     }
 
     private function buildLineGraph(ChartBuilderInterface $chartBuilder): Chart

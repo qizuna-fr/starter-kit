@@ -90,6 +90,15 @@
             "config/packages/nyholm_psr7.yaml"
         ]
     },
+    "openai-php/symfony": {
+        "version": "0.10",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "0.3",
+            "ref": "23b35dfd25adb2c5c467a50239a9ef0aa16f9328"
+        }
+    },
     "php-http/discovery": {
         "version": "1.19",
         "recipe": {
