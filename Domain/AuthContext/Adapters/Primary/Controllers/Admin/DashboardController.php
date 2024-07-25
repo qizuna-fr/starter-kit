@@ -3,27 +3,89 @@
 namespace Domain\AuthContext\Adapters\Primary\Controllers\Admin;
 
 
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
+use Infrastructure\Entities\Tenant;
 use Infrastructure\Entities\User;
 use Symfony\Component\Asset\Package;
 use Symfony\Component\Asset\VersionStrategy\JsonManifestVersionStrategy;
 use Symfony\Component\Filesystem\Path;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
+use Symfony\UX\Chartjs\Model\Chart;
 
 class DashboardController extends AbstractDashboardController
 {
-    public function __construct(private AdminUrlGenerator $urlGenerator)
+    public function __construct(private AdminUrlGenerator $urlGenerator, private ChartBuilderInterface $chartBuilder)
     {
+    }
+
+    public function configureAssets(): Assets
+    {
+
+        $assets = Assets::new();
+        $assets->addWebpackEncoreEntry('app');
+        //$assets->addJsFile('build/app.js');
+        $assets->addCssFile('build/admin/admin.css');
+        return $assets;
     }
 
     #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
-        return $this->redirect($this->urlGenerator->setController(UserCrudController::class)->generateUrl());
+        $chartNewCustomersLastMonth = $this->chartBuilder->createChart(Chart::TYPE_PIE);
+        $chartNewCustomersLastMonth->setData([
+            'labels' => ['< 1 jour', '1-7 jours' , '8-30 jours', '> 30 jours'],
+            'datasets' => [
+                [
+                    'label' => 'Nombre de tickets',
+                    'backgroundColor' => ['rgb(240,78,35)', 'rgb(51,226,209)', 'RGB(32 42 55)', 'RGB(228 232 237)'],
+                    'data' => [89, 15,3, 1],
+                ],
+            ],
+        ]);
+
+        $chartNewCustomersLastMonth->setOptions(
+            [
+                'maintainAspectRatio' => false,
+            ]
+        );
+
+        $chartBar = $this->chartBuilder->createChart(Chart::TYPE_BAR);
+        $chartBar->setData([
+                            'labels' => ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet' , 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+                            'datasets' => [
+                                [
+                                    'label' => "Tickets ouverts niveau 1",
+                                    'backgroundColor' => 'rgb(240,78,35)',
+                                    'borderColor' => 'RGB(194 61 25)',
+                                    'data' => [12, 10, 5, 2, 20, 30, 45, 48, 50, 55, 60, 70],
+                                ],
+                                [
+                                    'label' => "Tickets ouverts niveau 2",
+                                    'backgroundColor' => 'RGB(51 226 209)',
+                                    'borderColor' => 'RGB(37 189 173)',
+                                    'data' => [1, 0, 0, 0, 2, 3, 4, 5, 6, 7, 8, 12],
+                                ],
+                            ],
+                        ]);
+
+        $chartBar->setOptions(
+            [
+                'maintainAspectRatio' => false,
+            ]
+        );
+        return $this->render(
+            'bundles/EasyAdminBundle/welcome.html.twig',
+            [
+                'chart' => $chartBar,
+                'chartNewCustomersLastMonth' => $chartNewCustomersLastMonth,
+            ]
+        );
     }
 
     public function configureDashboard(): Dashboard
@@ -45,8 +107,9 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        //yield MenuItem::linkToDashboard('Dashboard', 'fa fa-dashboard');
+        yield MenuItem::linkToDashboard('Accueil', 'fa fa-home');
         yield MenuItem::linkToCrud('Utilisateurs', 'fa fa-users', User::class);
+        yield MenuItem::linkToCrud('Clients', 'fa fa-address-book', Tenant::class);
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
 }

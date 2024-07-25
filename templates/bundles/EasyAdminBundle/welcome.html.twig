@@ -1,0 +1,178 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block page_content %}
+
+
+
+    <div class="container  h-75 font-base">
+        <div class="dashboard">
+
+            <div>
+                <h3 class="leading-6 text-brandThird-100 text-2xl">Statistiques</h3>
+
+                <dl class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                    <div class="relative overflow-hidden rounded-lg bg-white px-4 pb-12 pt-5 shadow sm:px-6 sm:pt-6">
+                        <dt>
+                            <div class="absolute rounded-md bg-brandSecondary-500 p-3">
+                                <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                     stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/>
+                                </svg>
+                            </div>
+                            <p class="ml-16 truncate text-md font-extralight text-gray-500">Nombre d'utilisateurs
+                                actifs</p>
+                        </dt>
+                        <dd class="ml-16 flex items-baseline pb-6 sm:pb-7">
+                            <p class="text-2xl  text-gray-900">7 897</p>
+                            <div class="absolute inset-x-0 bottom-0 bg-gray-50 px-4 py-4 sm:px-6">
+                                <div class="text-md">
+                                    <a href="#" class="font-medium text-brandSecondary-600 hover:text-brandSecondary-500">Voir
+                                        la liste</a>
+                                </div>
+                            </div>
+                        </dd>
+                    </div>
+                    <div class="relative overflow-hidden rounded-lg bg-white px-4 pb-12 pt-5 shadow sm:px-6 sm:pt-6">
+                        <dt>
+                            <div class="absolute rounded-md bg-brandSecondary-500 p-3">
+                                <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                     stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/>
+                                </svg>
+                            </div>
+                            <p class="ml-16 truncate text-md font-extralight text-gray-500">Nombre d'entreprises
+                                utilisatrices</p>
+                        </dt>
+                        <dd class="ml-16 flex items-baseline pb-6 sm:pb-7">
+                            <p class="text-2xl  text-gray-900">422</p>
+                            <div class="absolute inset-x-0 bottom-0 bg-gray-50 px-4 py-4 sm:px-6">
+                                <div class="text-md">
+                                    <a href="#" class="font-medium text-brandSecondary-600 hover:text-brandSecondary-500">Voir
+                                        la liste</a>
+                                </div>
+                            </div>
+                        </dd>
+                    </div>
+                    <div class="relative overflow-hidden rounded-lg bg-white px-4 pb-12 pt-5 shadow sm:px-6 sm:pt-6">
+                        <dt>
+                            <div class="absolute rounded-md bg-brandSecondary-500 p-3">
+                                <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                     stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/>
+                                </svg>
+                            </div>
+                            <p class="ml-16 truncate text-md font-extralight text-gray-500">Date de dernière
+                                souscription</p>
+                        </dt>
+                        <dd class="ml-16 flex items-baseline pb-6 sm:pb-7">
+                            <p class="text-2xl  text-gray-900">Il y a 2 jours</p>
+                            <div class="absolute inset-x-0 bottom-0 bg-gray-50 px-4 py-4 sm:px-6">
+                                {#                                <div class="text-sm"> #}
+                                {#                                    <a href="#" class="font-medium text-brandSecondary-600 hover:text-brandSecondary-500">Voir la liste</a> #}
+                                {#                                </div> #}
+                            </div>
+                        </dd>
+                    </div>
+                </dl>
+            </div>
+
+            <div class="relative mt-16 ">
+                <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                    <div class="w-full border-t border-gray-300"></div>
+                </div>
+                <div class="relative flex justify-center">
+                    <span class="bg-white px-3 text-2xl font-extralight leading-6 text-brandSecondary-500 uppercase">Support</span>
+                </div>
+            </div>
+
+
+            <div class="grid grid-cols-2">
+
+                <div>
+                    <h3 class="leading-6 text-brandThird-100 text-2xl mt-16 mb-16">Nombre de tickets ouverts / mois</h3>
+                    <div class="h-[400px]">
+                        {{ render_chart(chart) }}
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="leading-6 text-brandThird-100 text-2xl mt-16 mb-16">Durée de résolution sur les 90 derniers jours</h3>
+                    <div class="h-[400px]">
+                        {{ render_chart( chartNewCustomersLastMonth) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative mt-16 ">
+                <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                    <div class="w-full border-t border-gray-300"></div>
+                </div>
+                <div class="relative flex justify-center">
+                    <span class="bg-white px-3 text-2xl font-extralight leading-6 text-brandSecondary-500 uppercase">Transactions bancaires</span>
+                </div>
+            </div>
+
+            <div>
+                <div class="px-4 sm:px-6 lg:px-8">
+                    <div class="sm:flex sm:items-center">
+                        <div class="sm:flex-auto">
+{#                            <h1 class="text-base font-semibold leading-6 text-gray-900">Transactions</h1>#}
+{#                            <p class="mt-2 text-sm text-gray-700">A table of placeholder stock market data that does not make any sense.</p>#}
+                        </div>
+                        <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
+                            <button type="button" class="block rounded-md bg-brandSecondary-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-brandSecondary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brandSecondary-600">Voir la liste complète</button>
+                        </div>
+                    </div>
+                    <div class="mt-8 flow-root">
+                        <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                            <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                                <table class="min-w-full divide-y divide-gray-300">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col" class="whitespace-nowrap py-3.5 pl-4 pr-3 text-left text-base font-semibold text-gray-900 sm:pl-0">Transaction ID</th>
+                                        <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-base font-semibold text-gray-900">Company</th>
+                                        <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-base font-semibold text-gray-900">Share</th>
+                                        <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-base font-semibold text-gray-900">Commision</th>
+                                        <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-base font-semibold text-gray-900">Price</th>
+                                        <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-base font-semibold text-gray-900">Quantity</th>
+                                        <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-base font-semibold text-gray-900">Net amount</th>
+                                        <th scope="col" class="relative whitespace-nowrap py-3.5 pl-3 pr-4 sm:pr-0">
+                                            <span class="sr-only">Edit</span>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-200 bg-white">
+                                    {% for i in 1..20 %}
+                                        <tr>
+                                            <td class="whitespace-nowrap py-2 pl-4 pr-3 text-base text-gray-500 sm:pl-0">AAPS0L</td>
+                                            <td class="whitespace-nowrap px-2 py-2 text-base font-medium text-gray-900">Chase &amp; Co.</td>
+                                            <td class="whitespace-nowrap px-2 py-2 text-base text-gray-900">CAC</td>
+                                            <td class="whitespace-nowrap px-2 py-2 text-base text-gray-500">+$4.37</td>
+                                            <td class="whitespace-nowrap px-2 py-2 text-base text-gray-500">$3,509.00</td>
+                                            <td class="whitespace-nowrap px-2 py-2 text-base text-gray-500">12.00</td>
+                                            <td class="whitespace-nowrap px-2 py-2 text-base text-gray-500">$4,397.00</td>
+                                            <td class="relative whitespace-nowrap py-2 pl-3 pr-4 text-right text-base font-medium sm:pr-0">
+                                                <a href="#" class="text-brandSecondary-600 hover:text-brandSecondary-900">Edit<span class="sr-only">, AAPS0L</span></a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+
+
+                                    <!-- More transactions... -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}

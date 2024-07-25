@@ -13,7 +13,7 @@
         "doctrine/doctrine-bundle": "^2.7",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.13",
-        "easycorp/easyadmin-bundle": "^4.5",
+        "easycorp/easyadmin-bundle": "^4.10",
         "endroid/qr-code": "^5.0",
         "gedmo/doctrine-extensions": "^3.11",
         "gotenberg/gotenberg-php": "^1.1",

@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+
+    --font-size-xxxl: 44px;
+    --default-font-weight: 400;
+
+    --bs-dropdown-font-size: 1.05rem;
+    --secondary: #E74011;
+    --bs-btn-font-size: 28px;
+    --sidebar-menu-color: white;
+    --sidebar-bg: #292C47 ;
+    --sidebar-menu-active-item-color : var(--secondary);
+    --button-primary-color: white;
+    --button-primary-bg: #25bdad;
+    --font-size-base: 1.05rem;
+    --font-family-sans-serif: 'Rubik', sans-serif;
+    --bs-body-font-weight: 100;
+    --form-switch-checked-bg: #E74011;
+    --badge-secondary-bg: #25bdad;
+    --badge-secondary-color: white;
+    --bs-badge-padding-x : 20px;
+    --bs-badge-padding-y : 10px;
+    --bs-badge-font-size: 1.05rem;
+    --link-color: #E74011;
+    --sidebar-max-width: 300px;
+}
+
+h1.title{
+    letter-spacing: -.1rem;
+    font-weight: var(--default-font-weight) !important;
+    margin-bottom: 2rem;
+}
+
+.content-header{
+    margin-bottom: 2rem;
+}
+
+.table.datagrid tbody td{
+    padding: 20px 0 !important;
+}
+
+.btn{
+    padding : 10px;
+    font-size : var(--font-size-base);
+}
+
+.menu-item{
+    padding : 10px;
+}
+
+.sidebar{
+    padding: 20px;
+}
+
+.dropdown-item{
+    font-size:var(--font-size-base);
+}
+
+.form-widget .form-select, .form-widget input.form-control, .form-widget textarea.form-control{
+    font-size: 1.05rem;
+}
+
+svg{
+    display:inline !important;
+}
+

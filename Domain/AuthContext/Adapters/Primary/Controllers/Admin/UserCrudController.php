@@ -2,17 +2,22 @@
 
 namespace Domain\AuthContext\Adapters\Primary\Controllers\Admin;
 
-use App\Entity\User;
+
+use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use EasyCorp\Bundle\EasyAdminBundle\Filter\TextFilter;
+use Infrastructure\Entities\User;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 use function array_keys;
 use function str_replace;
@@ -33,6 +38,7 @@ class UserCrudController extends AbstractCrudController
             ->setPageTitle(Crud::PAGE_INDEX, "Utilisateurs de l'application")
             ->setPageTitle(Crud::PAGE_EDIT, "Modifier un utilisateur")
             ->setPageTitle(Crud::PAGE_NEW, "Créer un nouvel utilisateur");
+
     }
 
     public function configureFields(string $pageName): iterable
@@ -40,6 +46,7 @@ class UserCrudController extends AbstractCrudController
         $formattedRoles = $this->getFormattedRoles();
 
         yield IdField::new('id', "Numéro")->onlyOnIndex();
+        yield AssociationField::new('tenant', "Entreprise");
         yield TextField::new('username', "Nom d'utilisateur");
         yield TextField::new('email', "Adresse email");
         yield BooleanField::new('isActive', "Compte activé")->onlyOnIndex();
@@ -70,6 +77,22 @@ class UserCrudController extends AbstractCrudController
         ];
     }
     */
+
+    public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    {
+        if( $entityInstance instanceof User) {
+            $entityInstance->setCreatedAt(new \DateTimeImmutable());
+
+        }
+    }
+
+
+
+    public function configureFilters(Filters $filters): Filters
+    {
+        return $filters->add(TextFilter::new('username' , 'email'));
+    }
+
     private function getFormattedRoles(): array
     {
         $roles = array_keys($this->getParameter('security.role_hierarchy.roles'));
