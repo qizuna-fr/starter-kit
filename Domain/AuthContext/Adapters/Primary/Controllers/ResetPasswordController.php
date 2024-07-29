@@ -128,6 +128,11 @@ final class ResetPasswordController extends AbstractController
             return $this->redirectToRoute('app_check_email');
         }
 
+        //si user a un mot de passe, mais n'est pas actif : ce n'est donc pas une premiere connexion
+        if(! $user->isActive() && $user->getPassword() !== null){
+            return $this->redirectToRoute('app_check_email');
+        }
+
         try {
             $resetToken = $this->resetPasswordHelper->generateResetToken($user);
         } catch (ResetPasswordExceptionInterface $e) {
@@ -135,7 +140,8 @@ final class ResetPasswordController extends AbstractController
         }
 
         $email = (new TemplatedEmail())
-            ->from(new Address('systeme@techeauxenergies.fr', 'Tech Eaux Energies'))
+            //TODO : changer les valeurs par des variables d'env
+            ->from(new Address('systeme@qizuna.fr', 'Qizuna'))
             ->to($user->getEmail())
             ->subject('Réinitialisation de votre mot de passe')
             ->htmlTemplate('reset_password/email.html.twig')
