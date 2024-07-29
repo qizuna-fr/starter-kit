@@ -4,6 +4,26 @@
 
 {% block content %}
 
+    {% set host = app.request.host %}
+
+
+    {% if '127.0.0.1' in host or 'localhost' in host or 'dev.qizuna.fr' in host %}
+    <div class="rounded-md bg-blue-50 p-4">
+        <div class="flex">
+            <div class="flex-shrink-0">
+                <svg class="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z" clip-rule="evenodd" />
+                </svg>
+            </div>
+            <div class="ml-3 flex-1 md:flex md:justify-between">
+                <p class="text-sm text-blue-700">Vous utilisez actuellement une plateforme de test/développement.</p>
+
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+
     {% if error is not null %}
         <div class="login__error_message text-white px-6 py-4 border-0 rounded relative bg-red-500 mb-10">
                             <span class="inline-block align-middle mr-8">
@@ -36,7 +56,7 @@
 
         <form method="post">
             <div>
-                <label for="username" class="block mb-2 text-sm text-gray-600 dark:text-gray-200">Identifiant</label>
+                <label for="username" class="block mb-2 text-sm text-gray-200 dark:text-gray-200">Identifiant</label>
                 <input type="text" id="username" placeholder="hello@qizuna.fr"
                        class="splitscreen__input"
                        value="{{ last_username }}" name="username" autocomplete="email"
@@ -45,7 +65,7 @@
 
             <div class="mt-6">
                 <div class="flex justify-between mb-2">
-                    <label for="password" class="form-control text-sm text-gray-600 dark:text-gray-200"
+                    <label for="password" class="form-control text-sm text-gray-200 dark:text-gray-200"
                            id="inputPassword"
                     >Mot de passe</label>
                     <a href="{{ path('app_forgot_password_request') }}"

@@ -6,6 +6,7 @@ use DateTimeImmutable;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\Persistence\ManagerRegistry;
+use Infrastructure\Entities\Tenant;
 use Infrastructure\Entities\User;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -74,5 +75,13 @@ final class UserRepository extends ServiceEntityRepository implements PasswordUp
             ->setParameter('date', new DateTimeImmutable())
             ->getQuery()
             ->getOneOrNullResult();
+    }
+
+    public function findUsersByTenant(Tenant $tenant){
+        return $this->createQueryBuilder('u')
+            ->where('u.tenant = :tenant')
+            ->setParameter('tenant', $tenant)
+            ->getQuery()
+            ->getResult();
     }
 }

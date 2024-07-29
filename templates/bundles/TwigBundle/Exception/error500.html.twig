@@ -1,0 +1,6 @@
+{% include 'bundles/TwigBundle/error_base.html.twig' with {
+    title: "Une erreur serveur à eu lieu",
+    subtitle : "Votre programme est entré dans un état non attendu. ",
+    message : exception.message,
+    withStack : true
+} %}

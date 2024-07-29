@@ -1,0 +1,6 @@
+{% include 'bundles/TwigBundle/error_base.html.twig' with {
+    title: "Une erreur inderterminée à eu lieu",
+    subtitle : "Une erreur s'est produite.",
+    message : exception.message,
+    withStack : true
+} %}

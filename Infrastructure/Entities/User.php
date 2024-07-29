@@ -61,6 +61,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TotpTwo
     #[ORM\Column(nullable: true)]
     private ?string $authCode;
 
+    #[ORM\Column(nullable: true)]
+    private ?string $activationToken;
+
 
     #[ORM\ManyToOne(targetEntity: Tenant::class, inversedBy: "users")]
     #[ORM\JoinColumn(nullable: true)]
@@ -168,6 +171,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TotpTwo
 
     public function setActivatedAt(?DateTimeInterface $activatedAt): self
     {
+        if($activatedAt === null){
+            $this->activatedAt = null;
+            return $this;
+        }
+
         if ($activatedAt instanceof DateTimeImmutable) {
             $this->activatedAt = $activatedAt;
             return $this;
@@ -179,7 +187,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TotpTwo
 
     public function isActive()
     {
-        return $this->activatedAt !== null || $this->activatedAt > (new DateTimeImmutable());
+        return $this->activatedAt !== null && $this->activatedAt < (new DateTimeImmutable());
     }
 
     /**
@@ -303,6 +311,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TotpTwo
         $this->authCode = $authCode;
     }
 
+    public function getFullName(){
+        return $this->firstName . ' ' . $this->lastName;
+    }
+
+    public function getActivationToken(): ?string
+    {
+        return $this->activationToken;
+    }
+
+    public function setActivationToken(?string $activationToken): User
+    {
+        $this->activationToken = $activationToken;
+        return $this;
+    }
 
     // @codeCoverageIgnoreEnd
+
+
+
 }

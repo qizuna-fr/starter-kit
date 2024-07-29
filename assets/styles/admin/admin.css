@@ -9,7 +9,7 @@
 
     --font-size-xxxl: 44px;
     --default-font-weight: 400;
-
+    --sidebar-menu-submenu-color: white;
     --bs-dropdown-font-size: 1.05rem;
     --secondary: #E74011;
     --bs-btn-font-size: 28px;
@@ -68,5 +68,9 @@ h1.title{
 
 svg{
     display:inline !important;
+}
+
+.btn-primary {
+    background-color: var(--button-primary-bg) !important;
 }
 

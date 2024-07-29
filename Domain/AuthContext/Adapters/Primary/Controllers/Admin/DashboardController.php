@@ -15,9 +15,11 @@ use Symfony\Component\Asset\VersionStrategy\JsonManifestVersionStrategy;
 use Symfony\Component\Filesystem\Path;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
 use Symfony\UX\Chartjs\Model\Chart;
 
+#[IsGranted('ROLE_ADMINISTRATEUR_LOGICIEL')]
 class DashboardController extends AbstractDashboardController
 {
     public function __construct(private AdminUrlGenerator $urlGenerator, private ChartBuilderInterface $chartBuilder)
@@ -107,9 +109,21 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Accueil', 'fa fa-home');
-        yield MenuItem::linkToCrud('Utilisateurs', 'fa fa-users', User::class);
-        yield MenuItem::linkToCrud('Clients', 'fa fa-address-book', Tenant::class);
+        yield MenuItem::linkToDashboard('Tableau de board', 'fa fa-dashboard');
+        //yield MenuItem::linkToCrud('Clients', 'fa fa-users', User::class);
+        yield MenuItem::linkToCrud('Clients', 'fa fa-address-book', Tenant::class)->setController(TenantCrudController::class);
+
+        yield MenuItem::subMenu('Interne', 'fa fa-home')->setSubItems(
+            [
+                MenuItem::linkToCrud(
+                    'Administrateurs',
+                    'fa fa-tags',
+                    User::class,
+                )->setController(
+                    InternalUserCrudController::class
+                )
+            ]
+        );
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
 }

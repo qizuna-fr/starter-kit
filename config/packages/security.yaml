@@ -41,12 +41,16 @@ security:
     - { path: ^/login , roles: PUBLIC_ACCESS }
     - { path: ^/webhooks , roles: PUBLIC_ACCESS }
     - { path: ^/reset-password , roles: PUBLIC_ACCESS }
+    - { path: ^/password/register , roles: PUBLIC_ACCESS }
+    - { path: ^/email/validate , roles: PUBLIC_ACCESS }
     - { path: ^/email , roles: IS_AUTHENTICATED_FULLY }
     - { path: ^/, roles: IS_AUTHENTICATED_FULLY }
     # - { path: ^/profile, roles: ROLE_USER }
 
   role_hierarchy:
-    ROLE_ADMIN: [ ROLE_USER ]
+    ROLE_UTILISATEUR: ~
+    ROLE_ADMINISTRATEUR_LOGICIEL: [ ROLE_USER ]
+    ROLE_ADMINISTRATEUR_CLIENT: [ ROLE_USER ]
 
 when@test:
   security:

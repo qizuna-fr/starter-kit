@@ -1,0 +1,9 @@
+{% include 'bundles/TwigBundle/error_base.html.twig' with {
+    title: "Accès interdit",
+    subtitle : "Vous n'êtes pas autorisé à accéder à cette page.",
+    message : exception.message,
+    withStack : true
+} %}
+
+
+

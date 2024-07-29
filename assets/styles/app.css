@@ -12,6 +12,10 @@ html{
     @apply bg-brandThird-500;
 }
 
+.login__background .toggle-password-button{
+    @apply text-white;
+}
+
 h1{
     @apply text-2xl sm:truncate sm:text-3xl sm:tracking-tight font-title font-extralight
 }

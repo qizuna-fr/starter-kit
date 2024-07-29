@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Domain\AuthContext\Adapters\Primary\Controllers;
 
 use Aws\S3\S3ClientInterface;
+use Domain\AuthContext\Adapters\Secondary\Repositories\TenantRepository;
+use Domain\AuthContext\Adapters\Secondary\Repositories\UserRepository;
 use Domain\PdfContext\Adapters\PdfGeneratorGateway;
 use Endroid\QrCode\Color\Color;
 use Endroid\QrCode\Encoding\Encoding;
@@ -323,6 +325,16 @@ final class TestController extends AbstractController
             ]
         );
         return $chartLine;
+    }
+
+    #[Route('/demo/tenant/{tenantId}', name: 'app_demo_tenant')]
+    public function testTenant(string $tenantId, UserRepository $repo, TenantRepository $tenantRepository){
+
+        $tenant = $tenantRepository->find($tenantId);
+        $users = $repo->findUsersByTenant($tenant);
+
+        dd($users);
+
     }
 
     private function buildPieGraph(ChartBuilderInterface $chartBuilder): Chart

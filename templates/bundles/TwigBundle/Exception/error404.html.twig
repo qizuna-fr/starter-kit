@@ -1,0 +1,6 @@
+{% include 'bundles/TwigBundle/error_base.html.twig' with {
+    title: "Cette page n'existe pas",
+    subtitle : "Vous avez tenté d'acceder a une page qui n'existe plus.",
+    message : exception.message,
+    withStack : true
+} %}
