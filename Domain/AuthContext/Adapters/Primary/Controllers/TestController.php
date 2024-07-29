@@ -23,6 +23,9 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Asset\Package;
+use Symfony\Component\Asset\VersionStrategy\JsonManifestVersionStrategy;
+use Symfony\Component\Filesystem\Path;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
@@ -246,6 +249,21 @@ final class TestController extends AbstractController
     #[Route('/email')]
     public function email(MailerInterface $mailer): Response
     {
+        $package = new Package(
+            new JsonManifestVersionStrategy(
+                Path::join($this->getParameter('kernel.project_dir'), "public/build/manifest.json")
+            )
+        );
+        $image = base64_encode(
+            file_get_contents(
+                Path::join(
+                    $this->getParameter('kernel.project_dir'),
+                    "public",
+                    $package->getVersion('build/images/logos/symfony.png')
+                )
+            )
+        );
+
         $email = (new TemplatedEmail())
             ->from('fabien@example.com')
             ->to(new Address('ryan@example.com'))
@@ -253,15 +271,14 @@ final class TestController extends AbstractController
 
             // path of the Twig template to render
             ->htmlTemplate('emails/example.html.twig')
-
-            /** TODO : Find a way to disable cache when twig is rendering
-             * Fow now, solution is to rename the file to force new rendering
-             */
-
             // pass variables (name => value) to the template
             ->context([
                 'expiration_date' => new \DateTime('+7 days'),
                 'username' => 'foo',
+                'url' => 'https://www.google.fr',
+                'tenant' => "Nom du tenant",
+                'title' => "Ceci est le titre ",
+                'base64image' => $image // image as base 64 -> easy tenant image sending
             ])
         ;
 
@@ -274,7 +291,7 @@ final class TestController extends AbstractController
     public function askToChatGpt(Request $request){
 
         $phrase = $request->get('phrase');
-        $query = 'Peux tu traduire en trois langues aléatoires la phrase suivante et uniquement afficher 
+        $query = 'Peux tu traduire en trois langues aléatoires la phrase suivante et uniquement afficher
         la traduction sans aucun commentaire. Choisis ces langues parmi celles de l\'union européene. 
         Renvoie le contenu sous forme de liste HTML.
         Chaque traduction devra se positionner sur une nouvelle ligne, et devra être précédée de l\emoji , 

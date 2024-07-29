@@ -9,7 +9,7 @@
 }
 
 body {"
-    font-family: 'Inter' , Helvetica, Arial, Sans-serif";
+    font-family: 'Rubik' , Helvetica, Arial, Sans-serif";
     width: 100% !important;
     min-width: 100%;
     -webkit-text-size-adjust: 100%;
@@ -46,7 +46,7 @@ body {"
 img {
     outline: none;
     text-decoration: none;
-    -ms-interpolation-mode: bicubic;
+    -ms-Rubikpolation-mode: bicubic;
     width: auto;
     max-width: 100%;
     clear: both;
@@ -96,7 +96,7 @@ table.body {
 }
 table.container {
     background: #fefefe;
-    width: 580px;
+    width: 720px;
     margin: 0 auto;
     Margin: 0 auto;
     text-align: inherit;
@@ -615,7 +615,7 @@ th.large-12.last {
 .collapse > tbody > tr > th.large-12:not([class*=large-offset]) {
     padding-right: 0;
     padding-left: 0;
-    width: 580px;
+    width: 720px;
 }
 .collapse > tbody > tr td.large-12.first,
 .collapse > tbody > tr th.large-12.first,
@@ -744,7 +744,7 @@ table.container.radius {
 
 .block-grid {
     width: 100%;
-    max-width: 580px;
+    max-width: 720px;
 }
 .block-grid td {
     display: inline-block;
@@ -945,7 +945,7 @@ p,
 td,
 th {
     color: #0a0a0a;
-    font-family: 'Inter', 'Helvetica Neue',  Helvetica, Arial, sans-serif;
+    font-family: 'Rubik', 'Helvetica Neue',  Helvetica, Arial, sans-serif;
     font-weight: normal;
     padding: 0;
     margin: 0;
@@ -962,7 +962,7 @@ h5,
 h6 {
     color: inherit;
     word-wrap: normal;
-    font-family: 'Dancing Script',Helvetica, Arial, sans-serif;
+    font-family: 'Rubik',Helvetica, Arial, sans-serif;
     font-weight: normal;
     margin-bottom: 10px;
     Margin-bottom: 10px;
@@ -1059,10 +1059,10 @@ a {
     line-height: 130%;
 }
 a:hover {
-    color: #147dc2;
+    color: #2199e8;
 }
 a:active {
-    color: #147dc2;
+    color: #2199e8;
 }
 a:visited {
     color: #2199e8;
@@ -1121,7 +1121,7 @@ table.h-line table {
 }
 table.hr th,
 table.h-line th {
-    width: 580px;
+    width: 720px;
     height: 0;
     padding-top: 20px;
     clear: both;
@@ -1177,7 +1177,7 @@ table.button table td {
     border: 2px solid #2199e8;
 }
 table.button table td a {
-    font-family: 'Inter', Helvetica, Arial, sans-serif;
+    font-family: 'Rubik', Helvetica, Arial, sans-serif;
     font-size: 16px;
     font-weight: bold;
     color: #fefefe;
@@ -1396,7 +1396,7 @@ th.callout-inner.alert {
 }
 
 table.menu {
-    width: 580px;
+    width: 720px;
 }
 table.menu td.menu-item,
 table.menu th.menu-item {

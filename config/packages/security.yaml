@@ -43,7 +43,7 @@ security:
     - { path: ^/reset-password , roles: PUBLIC_ACCESS }
     - { path: ^/password/register , roles: PUBLIC_ACCESS }
     - { path: ^/email/validate , roles: PUBLIC_ACCESS }
-    - { path: ^/email , roles: IS_AUTHENTICATED_FULLY }
+    - { path: ^/email , roles: PUBLIC_ACCESS }
     - { path: ^/, roles: IS_AUTHENTICATED_FULLY }
     # - { path: ^/profile, roles: ROLE_USER }
 

@@ -1,27 +1,115 @@
 {%  extends 'emails/base.html.twig' %}
 
 {% block content %}
+
+    <row>
+        <columns>
+            <spacer size="50"></spacer>
+        </columns>
+    </row>
+    <row>
+        <column>
+            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit velit cras faucibus, mollis purus metus dictumst
+                potenti
+                viverra tristique placerat phasellus venenatis, platea magnis sociosqu felis congue interdum hac cursus
+                porta.
+                Vestibulum taciti vehicula netus hac mi lacinia sapien, posuere rutrum ultricies inceptos conubia
+                gravida fames,
+                enim class in quis aptent mattis. Sem tellus sollicitudin consequat ultricies arcu sodales sociis
+                pretium,
+                tristique hendrerit urna vestibulum neque habitant phasellus lobortis velit, inceptos dapibus curae
+                vehicula
+                interdum parturient bibendum. Enim libero dui praesent inceptos torquent ad blandit lacus, rhoncus arcu
+                dictum
+                justo gravida elementum volutpat quis consequat, viverra cum sollicitudin ridiculus euismod duis eu.
+                Fringilla
+                id fusce etiam diam est suspendisse montes torquent inceptos, cubilia dictumst a proin sociosqu metus
+                scelerisque dapibus congue, nascetur mi curae tellus turpis molestie varius euismod. Conubia himenaeos
+                ornare
+                risus feugiat nisi primis gravida facilisi, neque per sem hendrerit potenti sociis dictum id, sapien
+                vitae
+                nostra facilisis tempus volutpat turpis.</p>
+            <p>Vestibulum eros condimentum vel laoreet lectus hendrerit massa
+                ut interdum himenaeos, neque lobortis parturient rhoncus inceptos suscipit tristique sollicitudin
+                viverra, dis metus
+                potenti blandit cras sodales habitasse euismod porttitor. Porta augue mollis class sodales aliquet
+                praesent purus
+                vestibulum quisque, tempor lectus primis suspendisse sed eget pellentesque taciti facilisi ante,
+                himenaeos orci quam
+                ridiculus integer cubilia risus iaculis. Imperdiet vulputate penatibus volutpat facilisis morbi
+                phasellus erat
+                porttitor, mus posuere eros litora mollis montes sem dignissim etiam, ultrices nec suscipit arcu euismod
+                consequat
+                aenean. Augue nostra class imperdiet nullam molestie maecenas ultrices porta elementum vivamus, risus
+                libero vitae
+                placerat sollicitudin pharetra cum per posuere justo, malesuada primis venenatis orci rutrum proin
+                porttitor sapien
+                metus. Egestas taciti mattis mauris quis placerat congue urna, vitae parturient cursus nullam a sociosqu
+                posuere,
+                maecenas litora dis bibendum tempus risus. Tempor sagittis sapien vivamus gravida hendrerit ullamcorper,
+                elementum
+                leo tellus curae dis augue, tincidunt ante nisl auctor laoreet.</p>
+            <p>Proin nostra risus congue et taciti volutpat
+                vel viverra ad libero, curae commodo ligula pretium convallis ornare eros gravida blandit sociis
+                himenaeos, eget leo
+                vulputate ut condimentum metus cubilia pharetra semper. Dis senectus ultricies est aenean lectus
+                molestie euismod
+                vel in, sagittis auctor pharetra nisl hendrerit mattis sed. Potenti mi class sed tincidunt fringilla
+                habitant vel,
+                faucibus nibh praesent facilisis eleifend primis volutpat, aliquam nascetur duis ante ullamcorper est.
+                Curabitur
+                conubia mattis auctor aptent non platea nascetur mollis habitant fames consequat cubilia cras lacinia,
+                placerat
+                ridiculus facilisi aenean velit convallis eleifend senectus ante eu pharetra metus. Turpis velit justo
+                inceptos
+                suscipit integer id mollis hac egestas netus luctus faucibus, purus neque sociosqu bibendum scelerisque
+                semper cras
+                lacus tortor magna facilisi, tempor orci blandit diam fusce imperdiet lobortis pretium pharetra ut
+                platea. Eleifend
+                rutrum nisl semper porttitor at cras, posuere consequat viverra ultricies blandit vivamus natoque,
+                quisque integer
+                risus facilisi metus. Orci habitasse fusce praesent rutrum maecenas natoque tempus arcu cum ultrices,
+                pulvinar
+                sollicitudin mi donec hac diam montes eros tincidunt mattis, facilisis senectus tempor vitae nascetur
+                scelerisque
+                pretium conubia torquent.</p>
+        </column>
+    </row>
+
+    <row>
+        <column>
+
+            <spacer size="20"></spacer>
+            <button href="#" class="expanded">This is a button with a link</button>
+            <spacer size="20"></spacer>
+        </column>
+    </row>
+
+
+
+{% endblock %}
+
+{% block header %}
+    <row>
+        <columns>
+            <spacer size="50"></spacer>
+            <img class="header__image" src="{{ email.image('@images/QZ-LOGO-COULEUR_600px.png') }}" alt="{{ tenant }}"
+                 class="thumbnail">
+        </columns>
+    </row>
+
+    <row>
+        <columns>
+            <img class="header__image"  src="data:image/png;base64,{{ base64image }}" alt="{{ tenant }}"
+                 class="thumbnail">
+        </columns>
+    </row>
     <row class="header">
         <columns>
             <spacer size="16"></spacer>
-            <h1 class="text-center">Welcome!</h1>
-        </columns>
-    </row>
-    <row>
-        <columns>
-            <p>Ceci est un nouveau </p>
-        </columns>
-    </row>
-    <row>
-        <columns>
-            <p>{{ url }}</p>
-        </columns>
-    </row>
-    <row>
-        <columns>
-            <spacer size="20"></spacer>
-            <button href="#" class="expanded">Expanded Button</button>
-            <spacer size="20"></spacer>
+            <h1 class="text-center">Ceci est un titre
+            </h1>
         </columns>
     </row>
 {% endblock %}
+
