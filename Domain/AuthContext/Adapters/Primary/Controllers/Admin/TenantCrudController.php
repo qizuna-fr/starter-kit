@@ -19,7 +19,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use Infrastructure\Entities\Tenant;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
+#[IsGranted('ROLE_LOGICIEL_ADMINISTRATEUR')]
 class TenantCrudController extends AbstractCrudController
 {
 

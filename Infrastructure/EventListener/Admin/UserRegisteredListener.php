@@ -42,10 +42,15 @@ class UserRegisteredListener
                 ->to($entity->getEmail())
                 ->from('systeme@qizuna.fr')
                 ->subject('Validation de votre adresse email')
-                ->htmlTemplate('emails/example.html.twig')
-                ->context([
-                              'url' => $url,
-                          ]);
+                ->htmlTemplate('emails/send_activation_link.html.twig')
+                ->context(
+                    [
+                        'url' => $url,
+                        'user_email' => $entity->getEmail(),
+                        'username' => $entity->getUsername(),
+                        'fullname' => $entity->getFullName()
+                    ]
+                );
 
             $this->mailer->send($email);
         }

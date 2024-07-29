@@ -1,0 +1,49 @@
+{%  extends 'emails/base.html.twig' %}
+
+{% block header %}
+    <row>
+        <columns>
+            <spacer size="50"></spacer>
+            <img class="header__image" src="{{ email.image('@images/QZ-LOGO-COULEUR_600px.png') }}"
+                 class="thumbnail">
+        </columns>
+    </row>
+
+
+    <row class="header">
+        <columns>
+            <spacer size="16"></spacer>
+            <h1 class="text-center">
+                Bonjour {{ fullname }}
+            </h1>
+        </columns>
+    </row>
+{% endblock %}
+
+{% block content %}
+
+    <row>
+        <columns>
+            <spacer size="50"></spacer>
+        </columns>
+    </row>
+    <row>
+        <column>
+            <p>Un administrateur vient de créer un compte qui est rattaché à l'adresse email <code>{{ user_email }}</code></p>
+            <p>Vous pouvez également copier et coller cette adresse dans un navigateur internet : </p>
+            <p><code>{{ url }}</code></p>
+        </column>
+    </row>
+    <row>
+        <column>
+
+            <spacer size="20"></spacer>
+            <button href="{{ url }}" class="expanded">Valider mon adresse email</button>
+            <spacer size="20"></spacer>
+        </column>
+    </row>
+
+{% endblock %}
+
+
+

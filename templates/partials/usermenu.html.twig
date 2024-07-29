@@ -44,12 +44,20 @@
             {%  if app.user.tenant.name is defined %}
             <span class="text-base text-brandPrincipal-800 text-extralight -mt-2">{{ app.user.tenant.name|capitalize }}</span>
             {% endif %}
+
+
         </div>
 
         <!-- Active: "bg-gray-100", Not Active: "" -->
         <a href="{{ path('app_user_settings') }}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">
             Mes informations
         </a>
+
+        {% if is_granted('IS_IMPERSONATOR') %}
+            <a href="{{ impersonation_exit_path('/admin') }}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">
+                Retour à l'administration
+            </a>
+        {% endif %}
 
         <a href="{{ path('app_logout') }}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Déconnexion</a>
     </div>

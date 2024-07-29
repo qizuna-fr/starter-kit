@@ -21,25 +21,31 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use Infrastructure\Entities\User;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 use function array_keys;
 use function bin2hex;
+use function dump;
 use function random_bytes;
 use function str_replace;
 use function strtolower;
 use function ucfirst;
 
-#[IsGranted('ROLE_ADMIN')]
+#[IsGranted('ROLE_LOGICIEL_ADMINISTRATEUR')]
 class InternalUserCrudController extends AbstractCrudController
 {
 
-
     public function __construct(
         private AdminUrlGenerator $adminUrlGenerator,
-        private UserRepository $userRepository
+        private UserRepository $userRepository,
+        private RequestStack $requestStack
     ) {
+
+
+
     }
 
     public static function getEntityFqcn(): string
@@ -123,15 +129,6 @@ class InternalUserCrudController extends AbstractCrudController
                 ->setAction(Action::INDEX)
                 ->generateUrl()
         );
-    }
-
-    public function sendActivationLink(AdminContext $adminContext): Response
-    {
-
-        $user = $adminContext->getEntity()->getInstance();
-
-
-
     }
 
     public function createEntity(string $entityFqcn)

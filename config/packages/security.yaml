@@ -27,6 +27,7 @@ security:
         auth_form_path: 2fa_login
         check_path: 2fa_login_check
 
+      switch_user: true
       # activate different ways to authenticate
       # https://symfony.com/doc/current/security.html#the-firewall
 
@@ -49,8 +50,12 @@ security:
 
   role_hierarchy:
     ROLE_UTILISATEUR: ~
-    ROLE_ADMINISTRATEUR_LOGICIEL: [ ROLE_USER ]
-    ROLE_ADMINISTRATEUR_CLIENT: [ ROLE_USER ]
+
+    ROLE_CLIENT_UTILISATEUR: [ ROLE_UTILISATEUR ]
+    ROLE_CLIENT_ADMINISTRATEUR: [ROLE_CLIENT_UTILISATEUR]
+
+    ROLE_LOGICIEL_UTILISATEUR: [ ROLE_USER ]
+    ROLE_LOGICIEL_ADMINISTRATEUR: [ ROLE_USER, ROLE_CLIENT_ADMINISTRATEUR, ROLE_ALLOWED_TO_SWITCH ]
 
 when@test:
   security:
