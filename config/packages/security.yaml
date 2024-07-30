@@ -37,6 +37,9 @@ security:
   # Easy way to control access for large sections of your site
   # Note: Only the *first* access control that matches will be used
   access_control:
+    - { path: ^/admin/manager, roles: ROLE_LOGICIEL_ADMINISTRATEUR }
+    - { path: ^/admin/client, roles: ROLE_CLIENT_ADMINISTRATEUR }
+    - { path: ^/admin, roles: ROLE_CLIENT_ADMINISTRATEUR }
     - { path: ^/logout, role: PUBLIC_ACCESS }
     - { path: ^/2fa, role: IS_AUTHENTICATED_2FA_IN_PROGRESS }
     - { path: ^/login , roles: PUBLIC_ACCESS }

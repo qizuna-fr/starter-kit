@@ -21,8 +21,8 @@ use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
 use Symfony\UX\Chartjs\Model\Chart;
 
 
-#[IsGranted('ROLE_CLIENT_ADMINISTRATEUR')]
-class DashboardController extends AbstractDashboardController
+#[IsGranted('ROLE_LOGICIEL_ADMINISTRATEUR')]
+class ManagerDashboardController extends AbstractDashboardController
 {
     public function __construct(private AdminUrlGenerator $urlGenerator, private ChartBuilderInterface $chartBuilder)
     {
@@ -37,7 +37,7 @@ class DashboardController extends AbstractDashboardController
         return $assets;
     }
 
-    #[Route('/admin', name: 'admin')]
+    #[Route('/admin/manager', name: 'app_admin_manager')]
     public function index(): Response
     {
         $chartNewCustomersLastMonth = $this->chartBuilder->createChart(Chart::TYPE_PIE);

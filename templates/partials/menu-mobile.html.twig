@@ -12,7 +12,7 @@
             {% include '/partials/menu-item.html.twig' with  {link:"#" , text:"Agenda" , icon:"fa-solid fa-2x fa-calendar"} %}
             {% include '/partials/menu-item.html.twig' with  {link:"#" , text:"Statistiques" , icon:"fa-solid fa-2x fa-chart-line"} %}
             {%  if is_granted('ROLE_CLIENT_ADMINISTRATEUR') %}
-            {% include '/partials/menu-item.html.twig' with  {link:path('admin'), text:"Réglages" , icon:"fa-solid fa-2x fa-cog"} %}
+            {% include '/partials/menu-item.html.twig' with  {link:path('app_admin'), text:"Réglages" , icon:"fa-solid fa-2x fa-cog"} %}
             {% endif %}
         </div>
         <div class="flex flex-shrink-0 flex-col p-2 text-center">
