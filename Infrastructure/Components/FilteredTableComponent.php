@@ -11,7 +11,7 @@ use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 
-#[AsLiveComponent(template: 'components/demo/filtered_table_component.html.twig')]
+#[AsLiveComponent(template: 'components/demo/filtered_table_component.html.twig', name: 'filtered_table_component')]
 class FilteredTableComponent
 {
     use DefaultActionTrait;

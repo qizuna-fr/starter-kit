@@ -1,0 +1,16 @@
+services:
+  Domain\SearchEngineContext\Write\BusinessLogic\Gateways\SearchEngineGateway:
+    alias: Domain\SearchEngineContext\Write\Adapters\Secondary\MeilisearchGateway
+
+  Domain\SearchEngineContext\Write\Adapters\Secondary\MeilisearchGateway:
+    arguments:
+      - $meilisearchClient: '@Meilisearch\Client'
+
+  Domain\SearchEngineContext\Read\BusinessLogic\Gateways\ReadFromSearchEngineGateway:
+    alias: Domain\SearchEngineContext\Read\Adapters\Secondary\Gateways\MeilisearchEngineGateway
+#
+#  Domain\SearchEngineContext\Read\Adapters\Secondary\Gateways\MeilisearchEngineGateway:
+#    arguments:
+#      - $requester: '@Domain\SearchEngineContext\Read\Adapters\Secondary\Gateways\Meilisearch\SearchEngineRequester'
+#      - $meilisearchClient: '@Meilisearch\Client'
+#      - $meilisearchPrefix: 'prefix'

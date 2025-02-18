@@ -11,7 +11,7 @@ use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 
-#[AsLiveComponent(template: 'components/demo/filtered_cards.html.twig')]
+#[AsLiveComponent(template: 'components/demo/filtered_cards.html.twig', name: 'filtered_cards')]
 class FilteredCardsComponent
 {
     use DefaultActionTrait;

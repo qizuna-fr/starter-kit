@@ -1,0 +1,6 @@
+# config/packages/mailer_dev_subdomain.yaml
+#when@prod:
+#  framework:
+#    mailer:
+#      envelope:
+#        recipients: ['hello@qizuna.fr']

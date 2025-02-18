@@ -4,7 +4,7 @@ namespace Infrastructure\Components;
 
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
-#[AsTwigComponent]
+#[AsTwigComponent('animated_link')]
 final class AnimatedLink
 {
     public string $url;

@@ -4,7 +4,7 @@ namespace Infrastructure\Components;
 
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
-#[AsTwigComponent]
+#[AsTwigComponent(name: 'heading-icon',)]
 final class HeadingIcon
 {
     public string $iconHtml = '';

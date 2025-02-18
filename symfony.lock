@@ -56,6 +56,18 @@
             "ref": "b131e6cbfe1b898a508987851963fff485986285"
         }
     },
+    "karser/karser-recaptcha3-bundle": {
+        "version": "0.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "0.1",
+            "ref": "c51ce07c10331d506762efe25b6f5843c1a5ea17"
+        },
+        "files": [
+            "config/packages/karser_recaptcha3.yaml"
+        ]
+    },
     "knplabs/knp-paginator-bundle": {
         "version": "v6.0.0"
     },
@@ -138,6 +150,18 @@
             "config/routes/scheb_2fa.yaml"
         ]
     },
+    "sentry/sentry-symfony": {
+        "version": "5.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "5.0",
+            "ref": "76afa07d23e76f678942f00af5a6a417ba0816d0"
+        },
+        "files": [
+            "config/packages/sentry.yaml"
+        ]
+    },
     "symfony/apache-pack": {
         "version": "1.0",
         "recipe": {
@@ -184,6 +208,18 @@
         },
         "files": [
             ".env"
+        ]
+    },
+    "symfony/form": {
+        "version": "7.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "7.2",
+            "ref": "7d86a6723f4a623f59e2bf966b6aad2fc461d36b"
+        },
+        "files": [
+            "config/packages/csrf.yaml"
         ]
     },
     "symfony/framework-bundle": {
