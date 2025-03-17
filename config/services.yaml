@@ -6,6 +6,7 @@
 parameters:
     gotenbergUrl: '%env(resolve:GOTENBERG_URL)%'
     meilisearchPrefix: '%env(resolve:MEILI_INDEX_PREFIX)%'
+    webauthn.secured_rp_ids: ['localhost']
 
 imports:
     - { resource: '../Domain/SearchEngineContext/Config/services.yaml' }
@@ -22,6 +23,8 @@ services:
             string $projectDir: '%kernel.project_dir%'
             $bucket: '%env(resolve:S3_BUCKET)%'
             string $recaptchaSiteKey: '%env(resolve:RECAPTCHA_SITE_KEY)%'
+            $fromEmail: '%env(resolve:EMAIL_SENDER)%'
+            $fromName: '%env(resolve:EMAIL_SENDER_NAME)%'
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name

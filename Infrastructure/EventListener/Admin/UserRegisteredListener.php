@@ -12,6 +12,7 @@ use Infrastructure\Entities\User;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
 use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Address;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 #[AsEventListener]
@@ -21,7 +22,9 @@ class UserRegisteredListener
 
     public function __construct(
         private UrlGeneratorInterface $urlGenerator,
-        private MailerInterface $mailer
+        private MailerInterface $mailer,
+        private string $fromEmail,
+        private string $fromName
     ) {
     }
 
@@ -40,7 +43,7 @@ class UserRegisteredListener
 
             $email = (new TemplatedEmail())
                 ->to($entity->getEmail())
-                ->from('systeme@qizuna.fr')
+                ->from(new Address($this->fromEmail, $this->fromName))
                 ->subject('Validation de votre adresse email')
                 ->htmlTemplate('emails/send_activation_link.html.twig')
                 ->context(
