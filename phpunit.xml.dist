@@ -27,6 +27,11 @@
         <env name="SENTRY_DSN" value=""/>
         <!-- ###- sentry/sentry-symfony ### -->
 
+        <!-- ###+ web-auth/webauthn-symfony-bundle ### -->
+        <env name="RELYING_PARTY_ID" value="example.com"/>
+        <env name="RELYING_PARTY_NAME" value="My Application"/>
+        <!-- ###- web-auth/webauthn-symfony-bundle ### -->
+
   </php>
   <testsuites>
     <testsuite name="Project Test Suite">

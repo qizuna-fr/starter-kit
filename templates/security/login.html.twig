@@ -54,7 +54,16 @@
     <div class="mt-8">
 
 
-        <form method="post">
+        <form method="post" {{ stimulus_controller('@web-auth/webauthn-stimulus',
+            {
+                useBrowserAutofill: true,
+                usernameField: '_username',
+                requestSuccessRedirectUri: path('app_index'),
+                requestResultUrl: path('webauthn.controller.security.main.request.result'),
+                requestOptionsUrl: path('webauthn.controller.security.main.request.options')
+            }
+        ) }}
+        >
             <div>
                 <label for="username" class="block mb-2 text-sm text-gray-200 dark:text-gray-200">Identifiant</label>
                 <input type="text" id="username" placeholder="hello@qizuna.fr"
@@ -74,7 +83,7 @@
                 </div>
 
                 <input name="password" id="password" placeholder="Votre mot de passe"
-                       type="password" autocomplete="current-password" required
+                       type="password" autocomplete="current-password"
                        class="splitscreen__input"/>
             </div>
 
@@ -86,6 +95,10 @@
                 <button
                         class="splitscreen__button">
                     Me connecter
+                </button>
+
+                <button {{ stimulus_action('@web-auth/webauthn-stimulus', 'signin') }}>
+                    Connect with passkey
                 </button>
             </div>
 

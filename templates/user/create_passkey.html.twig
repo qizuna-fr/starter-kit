@@ -1,0 +1,30 @@
+{% extends 'user/user_settings_base.html.twig' %}
+
+{% block  user_setting_content %}
+
+
+
+
+{% endblock %}
+
+{% block user_setting_title %}
+    Authentification sécurisée
+{% endblock %}
+
+{% block user_setting_description %}
+
+    En créant une <b>Passkey</b>, vous pourrez vous connecter de manière ultra-sécurisée et sans mot de passe sur cet appareil, en utilisant votre empreinte digitale, reconnaissance faciale ou code PIN.
+
+
+
+{#    <form class="mt-8"#}
+{#            data-controller="web-auth--webauthn-stimulus"#}
+{#            data-action="submit->web-auth--webauthn-stimulus#register"#}
+{#            data-web-auth--webauthn-stimulus-creation-options-url="{{ path('webauthn.controller.security.main.creation.options') }}"#}
+{#            data-web-auth--webauthn-stimulus-creation-success-redirect-uri="{{ path('app_index') }}">#}
+
+{#        <button type="submit" class="app_primary_button w-full">Créer une Passkey</button>#}
+{#    </form>#}
+
+
+{% endblock %}

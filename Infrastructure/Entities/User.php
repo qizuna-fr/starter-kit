@@ -27,6 +27,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TotpTwo
     #[ORM\Column]
     private ?int $id = null;
 
+    #[ORM\Column]
+    private ?string $uuid = null;
+
     #[ORM\Column(length: 180, unique: true)]
     private ?string $username = null;
 
@@ -63,7 +66,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TotpTwo
 
     #[ORM\Column(nullable: true)]
     private ?string $activationToken = null;
-
 
     #[ORM\ManyToOne(targetEntity: Tenant::class, inversedBy: "users")]
     #[ORM\JoinColumn(nullable: true)]
@@ -325,6 +327,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TotpTwo
         $this->activationToken = $activationToken;
         return $this;
     }
+
+    public function getUuid(): ?string
+    {
+        return $this->uuid;
+    }
+
+    public function setUuid(?string $uuid): User
+    {
+        $this->uuid = $uuid;
+        return $this;
+    }
+
+
 
     // @codeCoverageIgnoreEnd
 

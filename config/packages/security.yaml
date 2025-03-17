@@ -22,6 +22,21 @@ security:
         # where to redirect after logout
         # target: app_any_route
 
+      webauthn:
+        registration:
+          enabled: true
+          profile: default
+          routes:
+            options_path: '/passkeys/attestation/options'
+            result_path: '/passkeys/attestation/result'
+        authentication:
+          enabled: true
+          profile: default
+          routes:
+            options_path: '/passkeys/assertion/options'
+            result_path: '/passkeys/assertion/result'
+
+
       # comment the following lines to disable 2FA
       two_factor:
         auth_form_path: 2fa_login

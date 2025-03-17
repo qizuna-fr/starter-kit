@@ -132,6 +132,18 @@ class UserController extends AbstractController
         //return $this->render('user/2fa.html.twig');
     }
 
+    #[Route('/profile/passkeys', name: 'app_user_passkeys')]
+    public function passkeys()
+    {
+        return $this->render(
+            'user/create_passkey.html.twig',
+            [
+
+            ]
+        );
+    }
+
+
     #[Route('/profile/2fa/activate/totp', name: 'app_user_2fa_activate_totp')]
     public function activate2FATotp(TotpAuthenticatorInterface $totpAuthenticator )
     {
