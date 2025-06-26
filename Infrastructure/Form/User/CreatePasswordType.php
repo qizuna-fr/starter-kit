@@ -7,14 +7,12 @@ declare(strict_types=1);
 namespace Infrastructure\Form\User;
 
 
+use Infrastructure\Validators\PasswordComplexity\PasswordComplexity;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\Regex;
 
 class CreatePasswordType extends AbstractType
 {
@@ -27,10 +25,7 @@ class CreatePasswordType extends AbstractType
                 [
                     'constraints' => [
                         new NotBlank(),
-                        new Regex([
-                                      'pattern' => '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/',
-                                      'message' => 'Le mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial.'
-                                  ]),
+                        new PasswordComplexity()
                     ],
                     'toggle' => true,
                     'hidden_label' => 'Masquer',
