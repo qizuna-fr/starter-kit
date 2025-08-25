@@ -9,7 +9,7 @@ parameters:
     webauthn.secured_rp_ids: ['localhost']
 
 imports:
-    - { resource: '../Domain/SearchEngineContext/Config/services.yaml' }
+    - { resource: '../Domain/SearchEngineContext/config/services.yaml' }
 
 services:
     # default configuration for services in *this* file
