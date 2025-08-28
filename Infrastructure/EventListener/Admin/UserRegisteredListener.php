@@ -7,6 +7,7 @@ declare(strict_types=1);
 namespace Infrastructure\EventListener\Admin;
 
 
+use Domain\UserContext\Events\ExternalUserRegisteredEvent;
 use EasyCorp\Bundle\EasyAdminBundle\Event\AfterEntityPersistedEvent;
 use Infrastructure\Entities\User;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -16,6 +17,7 @@ use Symfony\Component\Mime\Address;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 #[AsEventListener]
+#[AsEventListener(event: ExternalUserRegisteredEvent::class, method: 'fromExternalRegistration')]
 class UserRegisteredListener
 {
 
@@ -31,6 +33,16 @@ class UserRegisteredListener
     public function __invoke(AfterEntityPersistedEvent $event): void
     {
         $entity = $event->getEntityInstance();
+        $this->sendEmail($entity);
+
+    }
+
+    public function fromExternalRegistration(ExternalUserRegisteredEvent $event): void
+    {
+        $this->sendEmail($event->getUser());
+    }
+
+    private function sendEmail(User $entity){
 
         if ($entity instanceof User && $entity->getActivationToken() !== null) {
             $url = $this->urlGenerator

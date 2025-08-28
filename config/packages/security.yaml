@@ -59,6 +59,7 @@ security:
     - { path: ^/2fa, role: IS_AUTHENTICATED_2FA_IN_PROGRESS }
     - { path: ^/login , roles: PUBLIC_ACCESS }
     - { path: ^/webhooks , roles: PUBLIC_ACCESS }
+    - { path: ^/webhook , roles: PUBLIC_ACCESS }
     - { path: ^/reset-password , roles: PUBLIC_ACCESS }
     - { path: ^/password/register , roles: PUBLIC_ACCESS }
     - { path: ^/email/validate , roles: PUBLIC_ACCESS }

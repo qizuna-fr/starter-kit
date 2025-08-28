@@ -7,6 +7,7 @@ parameters:
     gotenbergUrl: '%env(resolve:GOTENBERG_URL)%'
     meilisearchPrefix: '%env(resolve:MEILI_INDEX_PREFIX)%'
     webauthn.secured_rp_ids: ['localhost']
+    external_webhook_token: '%env(resolve:EXTERNAL_WEBHOOK_TOKEN)%'
 
 imports:
     - { resource: '../Domain/SearchEngineContext/config/services.yaml' }

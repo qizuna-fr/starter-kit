@@ -1,0 +1,6 @@
+framework:
+  webhook:
+    routing:
+      external_user_registration:
+        service: Domain\UserContext\Adapters\Primary\Webhook\ExternalUserRegistration\ExternalUserRegistrationRequestParser
+        secret: '%env(EXTERNAL_WEBHOOK_TOKEN)%'
