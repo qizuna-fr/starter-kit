@@ -84,4 +84,20 @@ final class UserRepository extends ServiceEntityRepository implements PasswordUp
             ->getQuery()
             ->getResult();
     }
+
+    public function findInactiveUsersCreatedBetween(
+        DateTimeImmutable|false $dayStart,
+        DateTimeImmutable|false $dayEnd
+    ) {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.activatedAt IS NULL')
+            ->andWhere('u.createdAt >= :dateStart')
+            ->andWhere('u.createdAt  <= :dateEnd')
+            ->setParameter('dateStart', $dayStart)
+            ->setParameter('dateEnd', $dayEnd)
+            ->getQuery()
+            ->getResult();
+
+
+    }
 }

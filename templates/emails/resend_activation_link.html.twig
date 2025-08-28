@@ -1,0 +1,56 @@
+{%  extends 'emails/base.html.twig' %}
+
+{% block header %}
+    <row>
+        <columns>
+            <spacer size="50"></spacer>
+            <img class="header__image" src="{{ email.image('@images/QZ-LOGO-COULEUR_600px.png') }}"
+                 class="thumbnail">
+        </columns>
+    </row>
+
+
+    <row class="header">
+        <columns>
+            <spacer size="16"></spacer>
+            <h1 class="text-center">
+                Bonjour,
+            </h1>
+        </columns>
+    </row>
+{% endblock %}
+
+{% block content %}
+
+    <row>
+        <columns>
+            <spacer size="50"></spacer>
+        </columns>
+    </row>
+    <row>
+        <columns>
+            <p>Un compte rattaché à l'adresse email <code>{{ user_email }}</code> a été créé voici {{deleted_in_days}} jours. Ce compte n'est actuellement pas activé .</p>
+            <p>Pour activer votre compte, vous pouvez cliquer sur le bouton ci-dessous</p>
+        </columns>
+    </row>
+
+    <row>
+        <columns>
+            <spacer size="20"></spacer>
+            <button href="{{ url }}" class="expanded">Activer mon compte</button>
+            <spacer size="20"></spacer>
+        </columns>
+    </row>
+    <row>
+        <columns>
+            <p>Sans action de votre part, votre compte sera supprimé dans {{deleted_in_days}} jours.</p>
+
+            <p>Vous pouvez également copier et coller cette adresse dans un navigateur internet : </p>
+            <p><code>{{ url }}</code></p>
+        </columns>
+    </row>
+
+{% endblock %}
+
+
+
