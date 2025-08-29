@@ -76,7 +76,7 @@ class ResendActivationInvite extends Command
             $email = (new TemplatedEmail())
                 ->to($user->getEmail())
                 ->from(new Address($this->fromEmail, $this->fromName))
-                ->subject('Votre compte est toujours inactif')
+                ->subject('Votre compte a été supprimé')
                 ->htmlTemplate('emails/resend_activation_link.html.twig')
                 ->context(
                     [

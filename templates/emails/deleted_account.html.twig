@@ -1,0 +1,44 @@
+{%  extends 'emails/base.html.twig' %}
+
+{% block header %}
+    <row>
+        <columns>
+            <spacer size="50"></spacer>
+            <img class="header__image" src="{{ email.image('@images/QZ-LOGO-COULEUR_600px.png') }}"
+                 class="thumbnail">
+        </columns>
+    </row>
+
+
+    <row class="header">
+        <columns>
+            <spacer size="16"></spacer>
+            <h1 class="text-center">
+                Bonjour,
+            </h1>
+        </columns>
+    </row>
+{% endblock %}
+
+{% block content %}
+
+    <row>
+        <columns>
+            <spacer size="50"></spacer>
+        </columns>
+    </row>
+    <row>
+        <column>
+            <p>Nous avons supprimé votre compte, car il est resté inactif pendant une longue période.</p>
+        </column>
+    </row>
+    <row>
+        <column>
+            <p>Vous pouvez dès à présent demander la création d'un nouveau compte.</p>
+        </column>
+    </row>
+
+{% endblock %}
+
+
+
